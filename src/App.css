@@ -4,15 +4,16 @@
   background-color: #bb0000;
 }
 
-.header > h1 {
-  color: #ffffff;
-  font-size: 6vw;
-  margin-top: 0;
-}
-
 .header {
   border-radius: 20px 20px 0 0;
   background-color: #333333;
+  padding: 1%;
+}
+
+.header > h1 {
+  color: #ffffff;
+  font-size: 6vw;
+  margin: 0;
 }
 
 .pokeball_title {
@@ -36,14 +37,17 @@
 .pokemon_name_bar {
   background-color: white;
   border-radius: 20px;
+  padding: 2px;
+  margin: 10px;
 }
 
 .pokemon_name_bar > h1 {
   font-size: 6vw;
+  margin: 0;
 }
 
 .stats {
-  font-size: 2.5vw;
+  font-size: 3.5vw;
   border-radius: 20px;
   justify-content: center;
   background-color: white;
@@ -51,7 +55,7 @@
   padding: 10px;
   display: grid;
   grid-gap: 5px;
-  grid-template-columns: 15% 15%;
+  grid-template-columns: 30% 25%;
 }
 
 .primary_text {
@@ -88,4 +92,9 @@
   background-color: grey;
   width: 100%;
   height: 100%;
+  cursor: pointer;
+}
+
+.others:hover {
+  transform: scale(1.1);
 }
