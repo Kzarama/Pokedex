@@ -15,11 +15,12 @@ function App() {
       {/* header */}
       <div className="pokedex-header">
         <h1>
-          <img className="pokedex-title__img" src={pokeball} alt="" />
+          <a href="https://github.com/Kzarama/Pokedex">
+            <img className="pokedex-title__img" src={pokeball} alt="" />
+          </a>
           Pokedex
         </h1>
       </div>
-
       {/* main */}
       <div className="pokedex-main">
         <div className="pokemon-name__container">
@@ -68,7 +69,6 @@ function App() {
           </span>
         </div>
       </div>
-
       {/* footer */}
       <div className="pokedex-footer">
         <h1>Others:</h1>
