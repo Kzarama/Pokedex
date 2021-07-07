@@ -1,5 +1,6 @@
 import './App.css';
 
+// images
 import pokeball from './images/pokeball.png';
 import charizard from './images/charizard.png';
 import fire from './images/fire.png';
@@ -11,44 +12,71 @@ import zangoose from './images/zangoose.png';
 function App() {
   return (
     <div className="App">
-      <div className="header">
+      {/* header */}
+      <div className="pokedex-header">
         <h1>
-          <img className="pokeball_title" src={pokeball} alt="" />
+          <img className="pokedex-title__img" src={pokeball} alt="" />
           Pokedex
         </h1>
       </div>
 
-      <div className="main">
-        <div className="pokemon_name_bar">
+      {/* main */}
+      <div className="pokedex-main">
+        <div className="pokemon-name__container">
           <h1>
-            <img className="name_type_image" src={fire} alt="" />
-            Charizard
+            <img className="pokemon-type__img" src={fire} alt="" />
+            CHARIZARD
           </h1>
         </div>
-        <img className="main_pokemon" src={charizard} alt="" />
-        <div className="stats">
-          <span className="secondary_text label_number_stat">N° </span>
-          <span className="primary_text number_stat">006 </span>
-          <span className="secondary_text label_level_stat">LEVEL </span>
-          <span className="primary_text level_stat">100 </span>
-          <span className="secondary_text label_type_stat">TYPE </span>
-          <span className="primary_text type_stat">FIRE </span>
-          <span className="secondary_text label_ability_stat">ABILITY </span>
-          <span className="primary_text ability_stat">FLAMES </span>
-          <span className="secondary_text label_height_stat">HEIGHT </span>
-          <span className="primary_text height_stat">1.7 m </span>
-          <span className="secondary_text label_weight_stat">WEIGHT </span>
-          <span className="primary_text weight_stat">90.5 Kg </span>
+        <img className="main-pokemon__img" src={charizard} alt="" />
+        <div className="stats__container">
+          <span className="secondary-span--grey secondary-span-number--position">
+            N°
+          </span>
+          <span className="primary-span--black primary-span-number--position">
+            006
+          </span>
+          <span className="secondary-span--grey secondary-span-level--position">
+            LEVEL
+          </span>
+          <span className="primary-span--black primary-span-level--position">
+            100
+          </span>
+          <span className="secondary-span--grey secondary-span-type--position">
+            TYPE
+          </span>
+          <span className="primary-span--black primary-span-type--position">
+            FIRE
+          </span>
+          <span className="secondary-span--grey secondary-span-ability--position">
+            ABILITY
+          </span>
+          <span className="primary-span--black primary-span-ability--position">
+            FLAMES
+          </span>
+          <span className="secondary-span--grey secondary-span-height--position">
+            HEIGHT
+          </span>
+          <span className="primary-span--black primary-span-height--position">
+            1.7 m
+          </span>
+          <span className="secondary-span--grey secondary-span-weight--position">
+            WEIGHT
+          </span>
+          <span className="primary-span--black primary-span-weight--position">
+            90.5 Kg
+          </span>
         </div>
       </div>
 
-      <div className="footer">
-        <div className="others_container">
+      {/* footer */}
+      <div className="pokedex-footer">
+        <div className="others__container">
           <h1>Others:</h1>
-          <img className="others" src={krookodile} alt="" />
-          <img className="others" src={lycanroc} alt="" />
-          <img className="others" src={meltan} alt="" />
-          <img className="others" src={zangoose} alt="" />
+          <img className="others__img" src={krookodile} alt="" />
+          <img className="others__img" src={lycanroc} alt="" />
+          <img className="others__img" src={meltan} alt="" />
+          <img className="others__img" src={zangoose} alt="" />
         </div>
       </div>
     </div>
