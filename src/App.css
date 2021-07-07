@@ -29,7 +29,7 @@
 }
 
 .main {
-  margin: 10px;
+  margin: 20px 10px 0 10px;
 }
 
 .pokemon_name_bar {
@@ -120,6 +120,7 @@
 
   .main {
     padding: 20px;
+    margin: 10px;
     align-items: center;
 
     display: grid;
