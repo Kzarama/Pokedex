@@ -1,0 +1,73 @@
+.App {
+  text-align: center;
+  border-radius: 20px;
+  background-color: #bb0000;
+}
+
+.header > h1 {
+  color: #ffffff;
+}
+
+.header {
+  border-radius: 20px 20px 0 0;
+  background-color: #333333;
+}
+
+.pokeball_title {
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+}
+
+.name_type_image {
+  width: 30px;
+  height: 30px;
+}
+
+.main {
+  margin: 10px;
+}
+
+.main_pokemon {
+  width: 80%;
+  height: auto;
+}
+
+.pokemon_name_bar {
+  background-color: white;
+  border-radius: 200px;
+}
+
+.stats {
+  border-radius: 20px;
+  justify-content: center;
+  background-color: white;
+  margin: 20px;
+  display: grid;
+  grid-template-columns: 15% 10%;
+}
+
+.secondary_text {
+  text-align: left;
+  color: grey;
+}
+
+.footer {
+  background-color: white;
+  border-radius: 0 0 20px 20px;
+}
+
+.others_container {
+  border-radius: 20px;
+  justify-content: center;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 20% 20%;
+}
+
+.others {
+  border-radius: 10px;
+  background-color: grey;
+  width: 100%;
+  height: auto;
+}
