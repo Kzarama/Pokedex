@@ -43,7 +43,7 @@ function App() {
       </div>
 
       <div className="footer">
-        <h3>Others:</h3>
+        <h1>Others:</h1>
         <div className="others_container">
           <img className="others" src={krookodile} alt="" />
           <img className="others" src={lycanroc} alt="" />
