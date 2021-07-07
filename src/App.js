@@ -71,13 +71,11 @@ function App() {
 
       {/* footer */}
       <div className="pokedex-footer">
-        <div className="others__container">
-          <h1>Others:</h1>
-          <img className="others__img" src={krookodile} alt="" />
-          <img className="others__img" src={lycanroc} alt="" />
-          <img className="others__img" src={meltan} alt="" />
-          <img className="others__img" src={zangoose} alt="" />
-        </div>
+        <h1>Others:</h1>
+        <img className="others__img" src={krookodile} alt="" />
+        <img className="others__img" src={lycanroc} alt="" />
+        <img className="others__img" src={meltan} alt="" />
+        <img className="others__img" src={zangoose} alt="" />
       </div>
     </div>
   );
