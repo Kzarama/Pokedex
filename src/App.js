@@ -27,18 +27,18 @@ function App() {
         </div>
         <img className="main_pokemon" src={charizard} alt="" />
         <div className="stats">
-          <span className="secondary_text">N° </span>
-          <span className="primary_text">006 </span>
-          <span className="secondary_text">LEVEL </span>
-          <span className="primary_text">100 </span>
-          <span className="secondary_text">TYPE </span>
-          <span className="primary_text">FIRE </span>
-          <span className="secondary_text">HABILITY </span>
-          <span className="primary_text">FLAMES </span>
-          <span className="secondary_text">HEIGHT </span>
-          <span className="primary_text">1.7 m </span>
-          <span className="secondary_text">WEIGHT </span>
-          <span className="primary_text">90.5 Kg </span>
+          <span className="secondary_text label_number_stat">N° </span>
+          <span className="primary_text number_stat">006 </span>
+          <span className="secondary_text label_level_stat">LEVEL </span>
+          <span className="primary_text level_stat">100 </span>
+          <span className="secondary_text label_type_stat">TYPE </span>
+          <span className="primary_text type_stat">FIRE </span>
+          <span className="secondary_text label_ability_stat">ABILITY </span>
+          <span className="primary_text ability_stat">FLAMES </span>
+          <span className="secondary_text label_height_stat">HEIGHT </span>
+          <span className="primary_text height_stat">1.7 m </span>
+          <span className="secondary_text label_weight_stat">WEIGHT </span>
+          <span className="primary_text weight_stat">90.5 Kg </span>
         </div>
       </div>
 
