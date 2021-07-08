@@ -13,23 +13,23 @@ function App() {
   return (
     <div className="App">
       {/* header */}
-      <div className="pokedex-header">
+      <div className="header">
         <h1>
           <a href="https://github.com/Kzarama/Pokedex">
-            <img className="pokedex-title__img" src={pokeball} alt="" />
+            <img className="header__img" src={pokeball} alt="" />
           </a>
           Pokedex
         </h1>
       </div>
       {/* main */}
-      <div className="pokedex-main">
-        <div className="pokemon-name__container">
+      <div className="main">
+        <div className="main__container">
           <h1>
-            <img className="pokemon-type__img" src={fire} alt="" />
+            <img className="main__type-img" src={fire} alt="" />
             CHARIZARD
           </h1>
         </div>
-        <img className="main-pokemon__img" src={charizard} alt="" />
+        <img className="main__pokemon-img" src={charizard} alt="" />
         <div className="stats__container">
           <span className="secondary-span--grey secondary-span-number--position">
             N°
@@ -70,7 +70,7 @@ function App() {
         </div>
       </div>
       {/* footer */}
-      <div className="pokedex-footer">
+      <div className="footer">
         <h1>Others:</h1>
         <img className="others__img" src={krookodile} alt="" />
         <img className="others__img" src={lycanroc} alt="" />
