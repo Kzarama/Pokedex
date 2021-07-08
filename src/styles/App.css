@@ -1,0 +1,299 @@
+.App {
+  text-align: center;
+  border-radius: 20px;
+  background-color: #d80000;
+  /* header */
+  /* main */
+  /* footer */
+}
+
+.App .header {
+  border-radius: 20px 20px 0 0;
+  background-color: #242424;
+  padding: 1%;
+  margin: auto;
+}
+
+.App .header > h1 {
+  font-family: 'Pokemon Solid', sans-serif;
+  letter-spacing: 0.5vw;
+  color: #ffffff;
+  font-size: 6vw;
+  padding-top: 10px;
+  margin: 0;
+}
+
+.App .header .header__img {
+  width: 9%;
+  vertical-align: middle;
+}
+
+@media (min-width: 600px) {
+  .App .header {
+    text-align: left;
+    padding-left: 20px;
+  }
+}
+
+.App .main {
+  margin: 20px 10px 0 10px;
+  /* main image pokemon */
+  /* stats main pokemon */
+}
+
+@media (min-width: 600px) {
+  .App .main {
+    padding: 20px;
+    margin: 10px;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 60% 40%;
+        grid-template-columns: 60% 40%;
+    -ms-grid-rows: 20% 80%;
+        grid-template-rows: 20% 80%;
+  }
+}
+
+.App .main .main__container {
+  border-radius: 20px;
+  background-color: white;
+  margin: 10px;
+  /* name main pokemon */
+}
+
+.App .main .main__container > h1 {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 6vw;
+  margin: 0;
+}
+
+@media (min-width: 600px) {
+  .App .main .main__container {
+    width: 90%;
+    height: 6vw;
+    padding: 0 0 6px 0;
+    margin: auto;
+    /* name main pokemon */
+  }
+  .App .main .main__container > h1 {
+    font-size: 5vw;
+    margin: 0;
+  }
+}
+
+.App .main .main__container .main__type-img {
+  width: 5vw;
+  height: auto;
+}
+
+.App .main .main__pokemon-img {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 600px) {
+  .App .main .main__pokemon-img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.App .main .stats__container {
+  font-size: 3.5vw;
+  border-radius: 20px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: white;
+  padding: 15px;
+  padding-top: 45px;
+  margin: 0 10px 0 10px;
+  position: relative;
+  top: -40px;
+  z-index: 1;
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 5px;
+  -ms-grid-columns: 35% 35%;
+      grid-template-columns: 35% 35%;
+}
+
+.App .main .stats__container > span {
+  text-align: left;
+}
+
+.App .main .stats__container .secondary-span--grey {
+  color: grey;
+}
+
+@media (min-width: 600px) {
+  .App .main .stats__container .secondary-span--grey {
+    -ms-flex-item-align: end;
+        -ms-grid-row-align: end;
+        align-self: end;
+  }
+}
+
+.App .main .stats__container .primary-span--black {
+  color: black;
+}
+
+@media (min-width: 600px) {
+  .App .main .stats__container {
+    font-size: 3vw;
+    height: 100%;
+    min-height: 300px;
+    padding: 0;
+    margin-left: 20px;
+    margin-right: 0;
+    top: 0;
+    -ms-grid-column: 2;
+    grid-column: 2;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
+    grid-row: 1/3;
+    -ms-grid-columns: 40% 40%;
+        grid-template-columns: 40% 40%;
+    -ms-grid-rows: (21% 7%)[3];
+        grid-template-rows: repeat(3, 21% 7%);
+    -webkit-column-gap: 10px;
+            column-gap: 10px;
+  }
+  .App .main .stats__container > span {
+    text-align: center;
+  }
+  .App .main .stats__container > .secondary-span-number--position {
+    -ms-grid-column: 1;
+    grid-column: 1;
+    -ms-grid-row: 1;
+    grid-row: 1;
+  }
+  .App .main .stats__container > .primary-span-number--position {
+    -ms-grid-column: 1;
+    grid-column: 1;
+    -ms-grid-row: 2;
+    grid-row: 2;
+  }
+  .App .main .stats__container > .secondary-span-level--position {
+    -ms-grid-column: 2;
+    grid-column: 2;
+    -ms-grid-row: 1;
+    grid-row: 1;
+  }
+  .App .main .stats__container > .primary-span-level--position {
+    -ms-grid-column: 2;
+    grid-column: 2;
+    -ms-grid-row: 2;
+    grid-row: 2;
+  }
+  .App .main .stats__container > .secondary-span-type--position {
+    -ms-grid-column: 1;
+    grid-column: 1;
+    -ms-grid-row: 3;
+    grid-row: 3;
+  }
+  .App .main .stats__container > .primary-span-type--position {
+    -ms-grid-column: 1;
+    grid-column: 1;
+    -ms-grid-row: 4;
+    grid-row: 4;
+  }
+  .App .main .stats__container > .secondary-span-ability--position {
+    -ms-grid-column: 2;
+    grid-column: 2;
+    -ms-grid-row: 3;
+    grid-row: 3;
+  }
+  .App .main .stats__container > .primary-span-ability--position {
+    -ms-grid-column: 2;
+    grid-column: 2;
+    -ms-grid-row: 4;
+    grid-row: 4;
+  }
+  .App .main .stats__container > .secondary-span-height--position {
+    -ms-grid-column: 1;
+    grid-column: 1;
+    -ms-grid-row: 5;
+    grid-row: 5;
+  }
+  .App .main .stats__container > .primary-span-height--position {
+    -ms-grid-column: 1;
+    grid-column: 1;
+    -ms-grid-row: 6;
+    grid-row: 6;
+  }
+  .App .main .stats__container > .secondary-span-weight--position {
+    -ms-grid-column: 2;
+    grid-column: 2;
+    -ms-grid-row: 5;
+    grid-row: 5;
+  }
+  .App .main .stats__container > .primary-span-weight--position {
+    -ms-grid-column: 2;
+    grid-column: 2;
+    -ms-grid-row: 6;
+    grid-row: 6;
+  }
+}
+
+.App .footer {
+  background-color: white;
+  border-radius: 0 0 20px 20px;
+  padding: 10px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -ms-grid;
+  display: grid;
+  gap: 10px;
+  -ms-grid-columns: 20vw 20vw;
+      grid-template-columns: 20vw 20vw;
+  /* other pokemons */
+}
+
+.App .footer > h1 {
+  font-size: 4vw;
+  margin: 2%;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1/3;
+}
+
+@media (min-width: 600px) {
+  .App .footer {
+    padding: 20px;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 21% 18% 18% 18% 18%;
+        grid-template-columns: 21% 18% 18% 18% 18%;
+  }
+  .App .footer > h1 {
+    font-size: 4vw;
+    margin: auto;
+    -ms-grid-column: 1;
+    grid-column: 1;
+  }
+}
+
+.App .footer .others__img {
+  cursor: pointer;
+  background-color: #242424;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.App .footer .others__img:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  background-color: #616161;
+}
+/*# sourceMappingURL=App.css.map */

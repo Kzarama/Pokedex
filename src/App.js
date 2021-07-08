@@ -1,4 +1,4 @@
-import './App.css';
+import './styles/App.css';
 
 // images
 import pokeball from './images/pokeball.png';
