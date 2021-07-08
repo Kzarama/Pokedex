@@ -1,3 +1,8 @@
+$background-red: #d80000;
+$background-grey: #242424;
+
+$border-radius: 20px;
+
 $desktop: 600px;
 
 @mixin desktop {
@@ -8,13 +13,13 @@ $desktop: 600px;
 
 .App {
   text-align: center;
-  border-radius: 20px;
-  background-color: #d80000;
+  border-radius: $border-radius;
+  background-color: $background-red;
 
   /* header */
   .header {
-    border-radius: 20px 20px 0 0;
-    background-color: #242424;
+    border-radius: $border-radius $border-radius 0 0;
+    background-color: $background-grey;
     padding: 1%;
     margin: auto;
     > h1 {
@@ -48,7 +53,7 @@ $desktop: 600px;
       grid-template-rows: 20% 80%;
     }
     .main__container {
-      border-radius: 20px;
+      border-radius: $border-radius;
       background-color: white;
       margin: 10px;
       /* name main pokemon */
@@ -88,11 +93,10 @@ $desktop: 600px;
     /* stats main pokemon */
     .stats__container {
       font-size: 3.5vw;
-      border-radius: 20px;
+      border-radius: $border-radius;
       justify-content: center;
       background-color: white;
-      padding: 15px;
-      padding-top: 45px;
+      padding: 45px 0px 15px 15%;
       margin: 0 10px 0 10px;
       position: relative;
       top: -40px;
@@ -184,7 +188,7 @@ $desktop: 600px;
   /* footer */
   .footer {
     background-color: white;
-    border-radius: 0 0 20px 20px;
+    border-radius: 0 0 $border-radius $border-radius;
     padding: 10px;
     justify-content: center;
     display: grid;
@@ -208,7 +212,7 @@ $desktop: 600px;
     /* other pokemons */
     .others__img {
       cursor: pointer;
-      background-color: #242424;
+      background-color: $background-grey;
       border-radius: 10px;
       width: 100%;
       height: 100%;
