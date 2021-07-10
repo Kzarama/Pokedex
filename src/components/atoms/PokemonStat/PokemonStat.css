@@ -1,0 +1,26 @@
+.a-stat__container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 40% 50%;
+      grid-template-columns: 40% 50%;
+  font-size: 4vw;
+}
+
+.a-stat__container .a-secondary__text {
+  color: grey;
+}
+
+.a-stat__container .a-primary__text {
+  color: black;
+}
+
+@media screen and (min-width: 600px) {
+  .a-stat__container {
+    -ms-grid-columns: 100%;
+        grid-template-columns: 100%;
+    -ms-grid-rows: 50% 50%;
+        grid-template-rows: 50% 50%;
+    font-size: 3vw;
+  }
+}
+/*# sourceMappingURL=PokemonStat.css.map */

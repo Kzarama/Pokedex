@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,sBAAsB,CAAC;EACrB,cAAc,EAAE,KAAK;EACrB,SAAS,EAAE,GAAG;EACd,OAAO,EAAE,mBAAmB;EAC5B,MAAM,EAAE,CAAC;CACV;;AAED,AAAA,gBAAgB,CAAC;EACf,KAAK,EAAE,GAAG;EACV,cAAc,EAAE,MAAM;CACvB",
+    "sources": [
+        "PokemonTitle.scss"
+    ],
+    "names": [],
+    "file": "PokemonTitle.css"
+}
