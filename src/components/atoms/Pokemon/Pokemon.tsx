@@ -1,8 +1,8 @@
 import React from 'react';
 
-import './OtherPokemon.css';
+import './Pokemon.css';
 
-function OtherPokemon(props: any) {
+function Pokemon(props: any) {
   return (
     <React.Fragment>
       <img className="a-others__img" src={props.images} alt="" />
@@ -10,4 +10,4 @@ function OtherPokemon(props: any) {
   );
 }
 
-export default OtherPokemon;
+export default Pokemon;

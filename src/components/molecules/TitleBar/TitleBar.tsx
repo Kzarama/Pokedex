@@ -2,12 +2,12 @@ import React from 'react';
 
 import './TitleBar.css';
 
-import PokemonTitle from '../../atoms/PokemonTitle/PokemonTitle';
+import Title from '../../atoms/Title/Title';
 
 function TitleBar(props: any) {
   return (
     <React.Fragment>
-      <PokemonTitle image={props.image} text={props.text}></PokemonTitle>
+      <Title image={props.image} text={props.text}></Title>
     </React.Fragment>
   );
 }

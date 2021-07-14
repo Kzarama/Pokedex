@@ -1,5 +1,5 @@
 import React from 'react';
-import OtherPokemon from '../../atoms/OtherPokemon/OtherPokemon';
+import OtherPokemon from '../../atoms/Pokemon/Pokemon';
 
 import './OtherPokemons.css';
 

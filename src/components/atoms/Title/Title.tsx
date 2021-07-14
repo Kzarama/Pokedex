@@ -1,8 +1,8 @@
 import React from 'react';
 
-import './PokemonTitle.css';
+import './Title.css';
 
-function PokemonTitle(props: any) {
+function Title(props: any) {
   return (
     <React.Fragment>
       <h1 className="a-pokedex-title__text">
@@ -13,4 +13,4 @@ function PokemonTitle(props: any) {
   );
 }
 
-export default PokemonTitle;
+export default Title;

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import './PokemonStat.css';
+import './Stat.css';
 
-function PokemonStat(props: any) {
+function Stat(props: any) {
   return (
     <React.Fragment>
       <div className="a-stat__container">
@@ -13,4 +13,4 @@ function PokemonStat(props: any) {
   );
 }
 
-export default PokemonStat;
+export default Stat;

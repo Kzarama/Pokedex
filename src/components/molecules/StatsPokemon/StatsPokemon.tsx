@@ -1,5 +1,5 @@
 import React from 'react';
-import PokemonStat from '../../atoms/PokemonStat/PokemonStat';
+import Stat from '../../atoms/Stat/Stat';
 
 import './StatsPokemon.css';
 
@@ -7,12 +7,12 @@ function StatsPokemon(props: any) {
   return (
     <React.Fragment>
       <div className="m-stats__container">
-        <PokemonStat title={'N°'} stat={'006'}></PokemonStat>
-        <PokemonStat title={'LEVEL'} stat={'100'}></PokemonStat>
-        <PokemonStat title={'TYPE'} stat={'FIRE'}></PokemonStat>
-        <PokemonStat title={'ABILITY'} stat={'FLAMES'}></PokemonStat>
-        <PokemonStat title={'HEIGHT'} stat={'1.7 m'}></PokemonStat>
-        <PokemonStat title={'WEIGHT'} stat={'90.5 Kg'}></PokemonStat>
+        <Stat title={'N°'} stat={'006'}></Stat>
+        <Stat title={'LEVEL'} stat={'100'}></Stat>
+        <Stat title={'TYPE'} stat={'FIRE'}></Stat>
+        <Stat title={'ABILITY'} stat={'FLAMES'}></Stat>
+        <Stat title={'HEIGHT'} stat={'1.7 m'}></Stat>
+        <Stat title={'WEIGHT'} stat={'90.5 Kg'}></Stat>
       </div>
     </React.Fragment>
   );
