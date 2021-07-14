@@ -12,10 +12,12 @@ function MainPokedex() {
   return (
     <React.Fragment>
       <div className="o-main__container">
-        <div className="o-titlebar__container">
-          <TitleBar image={Fire} text="Charizard"></TitleBar>
+        <div className="o-main_title_pokemon__container">
+          <div className="o-titlebar__container">
+            <TitleBar image={Fire} text="Charizard"></TitleBar>
+          </div>
+          <img className="o-pokemon__img" src={Charizard} alt="" />
         </div>
-        <img className="o-pokemon__img" src={Charizard} alt="" />
 
         <div className="o-stats__container">
           <StatsPokemon></StatsPokemon>

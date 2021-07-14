@@ -29,22 +29,25 @@ $desktop: 600px;
     z-index: 1;
   }
   @include desktop {
-    display: grid;
-    grid-template-columns: 60% 40%;
-    grid-template-rows: 20% 80%;
-    .o-titlebar__container {
-      width: 92%;
-    }
-    .o-pokemon__img {
-      grid-column: 1/2;
-      grid-row: 2/3;
-      width: 90%;
-      margin: auto;
+    display: flex;
+    flex-direction: row;
+    .o-main_title_pokemon__container {
+      width: 65%;
+      display: flex;
+      flex-direction: column;
+      .o-titlebar__container {
+        width: 90%;
+        height: auto;
+      }
+      .o-pokemon__img {
+        width: 95%;
+        height: auto;
+        margin: auto;
+        padding: auto;
+      }
     }
     .o-stats__container {
-      grid-column: 2/3;
-      grid-row: 1/3;
-      width: 100%;
+      width: 35%;
       height: auto;
       margin: auto;
     }
