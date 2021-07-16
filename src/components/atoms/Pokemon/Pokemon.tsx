@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './Pokemon.css';
+import './Pokemon.sass';
 
 function Pokemon(props: any) {
   return (

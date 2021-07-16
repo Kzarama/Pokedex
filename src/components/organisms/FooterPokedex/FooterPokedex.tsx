@@ -1,7 +1,7 @@
 import React from 'react';
 
 import OtherPokemons from '../../molecules/OtherPokemons/OtherPokemons';
-import './FooterPokedex.css';
+import './FooterPokedex.sass';
 
 import krookodile from '../../../assets/images/krookodile.png';
 import lycanroc from '../../../assets/images/lycanroc.png';

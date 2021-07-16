@@ -1,7 +1,7 @@
 import React from 'react';
 import OtherPokemon from '../../atoms/Pokemon/Pokemon';
 
-import './OtherPokemons.css';
+import './OtherPokemons.sass';
 
 function OtherPokemons(props: any) {
   return (

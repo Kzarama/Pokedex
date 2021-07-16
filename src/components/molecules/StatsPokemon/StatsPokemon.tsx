@@ -1,7 +1,7 @@
 import React from 'react';
 import Stat from '../../atoms/Stat/Stat';
 
-import './StatsPokemon.css';
+import './StatsPokemon.sass';
 
 function StatsPokemon(props: any) {
   return (

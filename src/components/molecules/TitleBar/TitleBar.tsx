@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './TitleBar.css';
+import './TitleBar.sass';
 
 import Title from '../../atoms/Title/Title';
 

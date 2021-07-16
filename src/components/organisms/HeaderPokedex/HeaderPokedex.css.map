@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAUA,AAAA,gBAAgB,CAAC;EACf,WAAW,EAAE,2BAA2B;EACxC,KAAK,EAAE,KAAK;EACZ,aAAa,EAAE,aAAa;EAC5B,gBAAgB,EAdA,OAAO;EAevB,OAAO,EAAE,EAAE;EACX,MAAM,EAAE,IAAI;EACZ,UAAU,EAAE,MAAM;CAInB;;AAhBC,MAAM,CAAC,MAAM,MAAM,SAAS,EAAE,KAAK;EAKrC,AAAA,gBAAgB,CAAC;IASb,UAAU,EAAE,IAAI;GAEnB",
-    "sources": [
-        "HeaderPokedex.scss"
-    ],
-    "names": [],
-    "file": "HeaderPokedex.css"
-}

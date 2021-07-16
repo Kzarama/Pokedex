@@ -1,10 +1,10 @@
 import React from 'react';
 
-import FooterPokedex from '../../organisms/FooterPokedex/FooterPokedex';
-import HeaderPokedex from '../../organisms/HeaderPokedex/HeaderPokedex';
-import MainPokedex from '../../organisms/MainPokedex/MainPokedex';
+import FooterPokedex from '../../components/organisms/FooterPokedex/FooterPokedex';
+import HeaderPokedex from '../../components/organisms/HeaderPokedex/HeaderPokedex';
+import MainPokedex from '../../components/organisms/MainPokedex/MainPokedex';
 
-import './Pokedex.css';
+import './Pokedex.sass';
 
 function Pokedex() {
   return (

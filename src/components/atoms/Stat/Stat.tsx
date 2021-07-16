@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './Stat.css';
+import './Stat.sass';
 
 function Stat(props: any) {
   return (

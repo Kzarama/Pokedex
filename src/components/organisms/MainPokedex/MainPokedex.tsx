@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './MainPokedex.css';
+import './MainPokedex.sass';
 
 import TitleBar from '../../molecules/TitleBar/TitleBar';
 import StatsPokemon from '../../molecules/StatsPokemon/StatsPokemon';
