@@ -1,18 +1,14 @@
-import React from 'react';
-
 import './HeaderPokedex.sass';
 
-import TitleBar from '../../molecules/TitleBar/TitleBar';
+// Components
+import Title from '../../atoms/Title/Title';
 
-import Pokeball from './../../../assets/images/pokeball.png';
-
-function HeaderPokedex() {
+// Header of Pokedex
+function HeaderPokedex(props: { image: string; altImage: string }) {
   return (
-    <React.Fragment>
-      <div className="o-pokemon-title">
-        <TitleBar image={Pokeball} text="Pokedex"></TitleBar>
-      </div>
-    </React.Fragment>
+    <header className="o-pokemon-title">
+      <Title image={props.image} altImage={props.altImage} text={'Pokedex'} />
+    </header>
   );
 }
 

@@ -1,20 +1,28 @@
-import React from 'react';
-import Stat from '../../atoms/Stat/Stat';
-
 import './StatsPokemon.sass';
 
-function StatsPokemon(props: any) {
+// Components
+import Stat from '../../atoms/Stat/Stat';
+
+// Set of stats
+function StatsPokemon(props: {
+  stats: {
+    number: string;
+    level: string;
+    type: string;
+    ability: string;
+    height: string;
+    weight: string;
+  };
+}) {
   return (
-    <React.Fragment>
-      <div className="m-stats__container">
-        <Stat title={'N°'} stat={'006'}></Stat>
-        <Stat title={'LEVEL'} stat={'100'}></Stat>
-        <Stat title={'TYPE'} stat={'FIRE'}></Stat>
-        <Stat title={'ABILITY'} stat={'FLAMES'}></Stat>
-        <Stat title={'HEIGHT'} stat={'1.7 m'}></Stat>
-        <Stat title={'WEIGHT'} stat={'90.5 Kg'}></Stat>
-      </div>
-    </React.Fragment>
+    <div className="m-stats__container">
+      <Stat title={'N°'} stat={props.stats.number} />
+      <Stat title={'LEVEL'} stat={props.stats.level} />
+      <Stat title={'TYPE'} stat={props.stats.type} />
+      <Stat title={'ABILITY'} stat={props.stats.ability} />
+      <Stat title={'HEIGHT'} stat={props.stats.height} />
+      <Stat title={'WEIGHT'} stat={props.stats.weight} />
+    </div>
   );
 }
 

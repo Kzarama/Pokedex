@@ -1,15 +1,12 @@
-import React from 'react';
-
 import './Title.sass';
 
-function Title(props: any) {
+// Image and title
+function Title(props: { image: string; altImage: string; text: string }) {
   return (
-    <React.Fragment>
-      <h1 className="a-pokedex-title__text">
-        <img className="a-pokeball__img" src={props.image} alt="" />
-        {props.text}
-      </h1>
-    </React.Fragment>
+    <h1 className="a-pokedex-title__text">
+      <img className="a-pokeball__img" src={props.image} alt={props.altImage} />
+      {props.text}
+    </h1>
   );
 }
 
