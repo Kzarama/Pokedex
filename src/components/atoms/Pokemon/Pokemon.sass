@@ -1,12 +1,8 @@
-$desktop: 600px
-
-@mixin desktop
-  @media screen and (min-width: $desktop)
-    @content
+@import ../../../styles/mixins
 
 .a-others__img
   cursor: pointer
-  background-color: #000000
+  background-color: black
   border-radius: 10px
   width: 30%
   flex-basis: 0
@@ -16,6 +12,7 @@ $desktop: 600px
     transform: scale(1.2)
     background-color: rgba(255, 255, 255, 0.2)
 
-  @include desktop
+@include desktop
+  .a-others__img
     width: 18%
     margin: 0 auto

@@ -1,18 +1,15 @@
-$background-grey: #242424
-
-$desktop: 600px
-
-@mixin desktop
-  @media screen and (min-width: $desktop)
-    @content
+@import ../../../styles/variables
+@import ../../../styles/mixins
 
 .o-pokemon-title
   font-family: 'Pokemon Solid', sans-serif
   color: white
   border-radius: 20px 20px 0 0
-  background-color: $background-grey
+  background-color: $dark_grey
   padding: 1%
   margin: auto
   text-align: center
-  @include desktop
+
+@include desktop
+  .o-pokemon-title
     text-align: left

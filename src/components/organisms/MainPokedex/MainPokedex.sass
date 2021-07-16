@@ -1,8 +1,4 @@
-$desktop: 600px
-
-@mixin desktop
-  @media screen and (min-width: $desktop)
-    @content
+@import ../../../styles/mixins
 
 .o-main__container
   background-color: red
@@ -10,23 +6,22 @@ $desktop: 600px
   object-fit: fill
   padding: 20px
   .o-titlebar__container
-    color: #000000
-    background-color: #ffffff
+    color: black
+    background-color: white
     border-radius: 20px
     width: 80%
     height: auto
     margin: auto
-
   .o-pokemon__img
     margin-top: 20px
     width: 100%
     position: relative
     z-index: 2
-
   .o-stats__container
     z-index: 1
 
-  @include desktop
+@include desktop
+  .o-main__container
     display: flex
     flex-direction: row
     .o-main_title_pokemon__container
@@ -36,13 +31,11 @@ $desktop: 600px
       .o-titlebar__container
         width: 90%
         height: auto
-
       .o-pokemon__img
         width: 95%
         height: auto
         margin: auto
         padding: auto
-
     .o-stats__container
       width: 35%
       height: auto

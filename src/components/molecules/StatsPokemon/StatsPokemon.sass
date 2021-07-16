@@ -1,8 +1,4 @@
-$desktop: 600px
-
-@mixin desktop
-  @media screen and (min-width: $desktop)
-    @content
+@import ../../../styles/mixins
 
 .m-stats__container
   font-size: 3.5vw
@@ -15,7 +11,9 @@ $desktop: 600px
   top: -30px
   margin-bottom: -20px
   z-index: 1
-  @include desktop
+
+@include desktop
+  .m-stats__container
     top: 0
     margin: auto 0 auto 0
     height: 100%

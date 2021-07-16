@@ -1,8 +1,4 @@
-$desktop: 600px
-
-@mixin desktop
-  @media screen and (min-width: $desktop)
-    @content
+@import ../../../styles/mixins
 
 .a-stat__container
   display: grid
@@ -10,11 +6,11 @@ $desktop: 600px
   font-size: 4vw
   .a-secondary__text
     color: grey
-
   .a-primary__text
     color: black
 
-  @include desktop
+@include desktop
+  .a-stat__container
     grid-template-columns: 100%
     grid-template-rows: 50% 50%
     font-size: 3vw
