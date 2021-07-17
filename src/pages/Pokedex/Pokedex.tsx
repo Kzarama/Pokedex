@@ -16,12 +16,18 @@ import zangoose from '../../assets/images/zangoose.png';
 function Pokedex() {
   return (
     <PokedexTemplate
+      // Title pokeball
       imageHeader={pokeball}
       altImageHeader={'pokeball image'}
+      // Type pokemon
       imageTypeMain={fire}
       altImageTypeMain={'fire type image'}
+      // Pokemon name
       textNamePokemonMain={'Charizard'}
+      // Pokemon image
       imagePokemonMain={charizard}
+      altImagePokemonMain={'charizard image'}
+      // Pokemon stats
       stats={{
         number: '006',
         level: '100',
@@ -30,22 +36,23 @@ function Pokedex() {
         height: '1.7 m',
         weight: '90.5 kg',
       }}
+      // Other pokemons images
       footerImages={[
         {
           image: krookodile,
-          altImage: 'Krookodile',
+          altImage: 'Krookodile image',
         },
         {
           image: lycanroc,
-          altImage: 'Lycanroc',
+          altImage: 'Lycanroc image',
         },
         {
           image: meltan,
-          altImage: 'Meltan',
+          altImage: 'Meltan image',
         },
         {
           image: zangoose,
-          altImage: 'Zangoose',
+          altImage: 'Zangoose image',
         },
       ]}
     />

@@ -3,7 +3,7 @@ import './PokedexTemplate.sass';
 // Components
 import HeaderPokedex from '../components/organisms/HeaderPokedex/HeaderPokedex';
 import MainPokedex from '../components/organisms/MainPokedex/MainPokedex';
-import OtherPokemons from '../components/molecules/OtherPokemons/OtherPokemons';
+import OtherPokemons from '../components/organisms/FooterPokedex/FooterPokedex';
 
 // Pokedex template layout
 function PokedexTemplate(props: {
@@ -13,6 +13,7 @@ function PokedexTemplate(props: {
   altImageTypeMain: string;
   textNamePokemonMain: string;
   imagePokemonMain: string;
+  altImagePokemonMain: string;
   stats: {
     number: string;
     level: string;
@@ -37,6 +38,7 @@ function PokedexTemplate(props: {
         altImage={props.altImageTypeMain}
         text={props.textNamePokemonMain}
         imagePokemon={props.imagePokemonMain}
+        altImagePokemon={props.altImagePokemonMain}
         stats={props.stats}
       />
       <OtherPokemons images={props.footerImages} />

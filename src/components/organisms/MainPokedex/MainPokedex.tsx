@@ -10,6 +10,7 @@ function MainPokedex(props: {
   altImage: string;
   text: string;
   imagePokemon: string;
+  altImagePokemon: string;
   stats: {
     number: string;
     level: string;
@@ -29,7 +30,11 @@ function MainPokedex(props: {
             text={props.text}
           />
         </div>
-        <img className="o-pokemon__img" src={props.imagePokemon} alt="" />
+        <img
+          className="o-pokemon__img"
+          src={props.imagePokemon}
+          alt={props.altImagePokemon}
+        />
       </div>
 
       <div className="o-stats__container">
