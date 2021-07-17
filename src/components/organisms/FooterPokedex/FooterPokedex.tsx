@@ -1,18 +1,18 @@
-import './OtherPokemons.sass';
+import './FooterPokedex.sass';
 
 // Components
 import OtherPokemon from '../../atoms/Pokemon/Pokemon';
 
 // Other pokemons to use in the footer
-function OtherPokemons(props: {
+function FooterPokedex(props: {
   images: {
     image: string;
     altImage: string;
   }[];
 }) {
   return (
-    <footer className="m-others__container">
-      <span className="m-others__label">Others:</span>
+    <footer className="o-footer__container">
+      <span className="o-footer__label">Others:</span>
       <OtherPokemon
         image={props.images[0].image}
         altImage={props.images[0].altImage}
@@ -33,4 +33,4 @@ function OtherPokemons(props: {
   );
 }
 
-export default OtherPokemons;
+export default FooterPokedex;
