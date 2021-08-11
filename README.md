@@ -4,6 +4,6 @@ Visualization of a page with a title in the header, a charizard in the main and 
 
 Atomic design.
 
-[Link to herokuapp.](https://pokedex-kz.herokuapp.com/)
+<a href="https://pokedex-kz.herokuapp.com/" target="_blank">Link to herokuapp.</a>
 
 By Kevin Zarama.
