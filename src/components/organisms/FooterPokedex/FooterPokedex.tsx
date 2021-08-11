@@ -5,32 +5,42 @@ import OtherPokemon from '../../atoms/Pokemon/Pokemon';
 
 // Other pokemons to use in the footer
 function FooterPokedex(props: {
-  images: {
-    image: string;
-    altImage: string;
-  }[];
+    images: {
+        image: string;
+        altImage: string;
+        id: number;
+        setIdSelected: any
+    }[];
 }) {
-  return (
-    <footer className="o-footer__container">
-      <span className="o-footer__label">Others:</span>
-      <OtherPokemon
-        image={props.images[0].image}
-        altImage={props.images[0].altImage}
-      />
-      <OtherPokemon
-        image={props.images[1].image}
-        altImage={props.images[1].altImage}
-      />
-      <OtherPokemon
-        image={props.images[2].image}
-        altImage={props.images[2].altImage}
-      />
-      <OtherPokemon
-        image={props.images[3].image}
-        altImage={props.images[3].altImage}
-      />
-    </footer>
-  );
+    return (
+        <footer className="o-footer__container">
+            <span className="o-footer__label">Others:</span>
+            <OtherPokemon
+                image={props.images[0].image}
+                altImage={props.images[0].altImage}
+                id={props.images[0].id}
+                setIdSelected={props.images[0].setIdSelected}
+            />
+            <OtherPokemon
+                image={props.images[1].image}
+                altImage={props.images[1].altImage}
+                id={props.images[1].id}
+                setIdSelected={props.images[1].setIdSelected}
+            />
+            <OtherPokemon
+                image={props.images[2].image}
+                altImage={props.images[2].altImage}
+                id={props.images[2].id}
+                setIdSelected={props.images[2].setIdSelected}
+            />
+            <OtherPokemon
+                image={props.images[3].image}
+                altImage={props.images[3].altImage}
+                id={props.images[3].id}
+                setIdSelected={props.images[3].setIdSelected}
+            />
+        </footer>
+    );
 }
 
 export default FooterPokedex;

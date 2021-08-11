@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 import './Pokedex.sass';
 
 // Components
@@ -5,58 +7,77 @@ import PokedexTemplate from '../../templates/PokedexTemplate';
 
 // Images
 import pokeball from '../../assets/images/pokeball.png';
-import fire from '../../assets/images/fire.png';
-import charizard from '../../assets/images/charizard.png';
-import krookodile from '../../assets/images/krookodile.png';
-import lycanroc from '../../assets/images/lycanroc.png';
-import meltan from '../../assets/images/meltan.png';
-import zangoose from '../../assets/images/zangoose.png';
+
+import { getPokemonById, getRandomPokemon } from '../../services/pokeapi';
 
 // Pokedex layout
 function Pokedex() {
-  return (
-    <PokedexTemplate
-      // Title pokeball
-      imageHeader={pokeball}
-      altImageHeader={'pokeball image'}
-      // Type pokemon
-      imageTypeMain={fire}
-      altImageTypeMain={'fire type image'}
-      // Pokemon name
-      textNamePokemonMain={'Charizard'}
-      // Pokemon image
-      imagePokemonMain={charizard}
-      altImagePokemonMain={'charizard image'}
-      // Pokemon stats
-      stats={{
-        number: '006',
-        level: '100',
-        type: 'FIRE',
-        ability: 'FLAMES',
-        height: '1.7 m',
-        weight: '90.5 kg',
-      }}
-      // Other pokemons images
-      footerImages={[
-        {
-          image: krookodile,
-          altImage: 'Krookodile image',
-        },
-        {
-          image: lycanroc,
-          altImage: 'Lycanroc image',
-        },
-        {
-          image: meltan,
-          altImage: 'Meltan image',
-        },
-        {
-          image: zangoose,
-          altImage: 'Zangoose image',
-        },
-      ]}
-    />
-  );
+    const [pokemon, setPokemon] = useState({ name: "", image: "", type: "", experience: "", ability: "", id: 0, height: 0, weight: 0 });
+    const [idSelected, setIdSelected] = useState(0)
+    const [pokemon1, setPokemon1] = useState({ name: "", image: "", id: 0 });
+    const [pokemon2, setPokemon2] = useState({ name: "", image: "", id: 0 });
+    const [pokemon3, setPokemon3] = useState({ name: "", image: "", id: 0 });
+    const [pokemon4, setPokemon4] = useState({ name: "", image: "", id: 0 });
+
+    useEffect(() => {
+        (async () => {
+            setPokemon(await getRandomPokemon())
+            setPokemon1(await getRandomPokemon())
+            setPokemon2(await getRandomPokemon())
+            setPokemon3(await getRandomPokemon())
+            setPokemon4(await getRandomPokemon())
+        })()
+        console.log(pokemon)
+    }, []);
+
+    return (
+        <PokedexTemplate
+            // Title pokeball
+            imageHeader={pokeball}
+            altImageHeader={'pokeball image'}
+            // Pokemon name
+            textNamePokemonMain={pokemon.name}
+            // Pokemon image
+            imagePokemonMain={pokemon.image}
+            altImagePokemonMain={'charizard image'}
+            // Pokemon stats
+            stats={{
+                number: pokemon.id + "",
+                type: pokemon.type,
+                experience: pokemon.experience,
+                ability: pokemon.ability,
+                height: pokemon.height + ' m',
+                weight: pokemon.weight + ' kg',
+            }}
+            // Other pokemons images
+            footerImages={[
+                {
+                    image: pokemon1.image,
+                    altImage: pokemon1.name,
+                    id: pokemon1.id,
+                    setIdSelected
+                },
+                {
+                    image: pokemon2.image,
+                    altImage: pokemon2.name,
+                    id: pokemon1.id,
+                    setIdSelected
+                },
+                {
+                    image: pokemon3.image,
+                    altImage: pokemon3.name,
+                    id: pokemon1.id,
+                    setIdSelected
+                },
+                {
+                    image: pokemon4.image,
+                    altImage: pokemon4.name,
+                    id: pokemon1.id,
+                    setIdSelected
+                },
+            ]}
+        />
+    );
 }
 
 export default Pokedex;
