@@ -13,7 +13,6 @@ import { getPokemonById, getRandomPokemon } from '../../services/pokeapi';
 // Pokedex layout
 function Pokedex() {
     const [pokemon, setPokemon] = useState({ name: "", image: "", type: "", experience: "", ability: "", id: 0, height: 0, weight: 0 });
-    const [idSelected, setIdSelected] = useState(0)
     const [pokemon1, setPokemon1] = useState({ name: "", image: "", id: 0 });
     const [pokemon2, setPokemon2] = useState({ name: "", image: "", id: 0 });
     const [pokemon3, setPokemon3] = useState({ name: "", image: "", id: 0 });
@@ -21,13 +20,18 @@ function Pokedex() {
 
     useEffect(() => {
         (async () => {
-            setPokemon(await getRandomPokemon())
+            const id = sessionStorage.getItem('idSelected')
+            if (id === null) {
+                setPokemon(await getRandomPokemon())
+            } else {
+                setPokemon(await getPokemonById(id))
+                sessionStorage.clear()
+            }
             setPokemon1(await getRandomPokemon())
             setPokemon2(await getRandomPokemon())
             setPokemon3(await getRandomPokemon())
             setPokemon4(await getRandomPokemon())
         })()
-        console.log(pokemon)
     }, []);
 
     return (
@@ -39,7 +43,7 @@ function Pokedex() {
             textNamePokemonMain={pokemon.name}
             // Pokemon image
             imagePokemonMain={pokemon.image}
-            altImagePokemonMain={'charizard image'}
+            altImagePokemonMain={pokemon.name}
             // Pokemon stats
             stats={{
                 number: pokemon.id + "",
@@ -55,25 +59,21 @@ function Pokedex() {
                     image: pokemon1.image,
                     altImage: pokemon1.name,
                     id: pokemon1.id,
-                    setIdSelected
                 },
                 {
                     image: pokemon2.image,
                     altImage: pokemon2.name,
-                    id: pokemon1.id,
-                    setIdSelected
+                    id: pokemon2.id,
                 },
                 {
                     image: pokemon3.image,
                     altImage: pokemon3.name,
-                    id: pokemon1.id,
-                    setIdSelected
+                    id: pokemon3.id,
                 },
                 {
                     image: pokemon4.image,
                     altImage: pokemon4.name,
-                    id: pokemon1.id,
-                    setIdSelected
+                    id: pokemon4.id,
                 },
             ]}
         />

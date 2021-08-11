@@ -5,20 +5,23 @@
     text-align: center
     object-fit: fill
     padding: 20px
-    .o-titlebar__container
-        color: black
-        background-color: white
-        border-radius: 20px
-        width: 80%
-        height: auto
-        margin: auto
+    .o-main_title_pokemon__container
+        .o-titlebar__container
+            color: black
+            background-color: white
+            border-radius: 20px
+            width: 80%
+            height: auto
+            margin: auto
+            h1
+                text-transform: uppercase
+                font-size: 4vw
         .o-pokemon__img
-            margin-top: 20px
-            width: 100%
             position: relative
             z-index: 2
-        .o-stats__container
-            z-index: 1
+            width: 70vw
+            height: 70vw
+            position: relative
 
 @include desktop
     .o-main__container
@@ -32,9 +35,10 @@
                 width: 90%
                 height: auto
             .o-pokemon__img
-                width: 95%
+                width: 70%
                 height: auto
                 margin: auto
+                margin-top: 10px
                 padding: auto
         .o-stats__container
             width: 35%

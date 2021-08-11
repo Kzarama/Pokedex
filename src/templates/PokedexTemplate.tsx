@@ -24,7 +24,6 @@ function PokedexTemplate(props: {
         image: string;
         altImage: string;
         id: number;
-        setIdSelected: any
     }[];
 }) {
     return (

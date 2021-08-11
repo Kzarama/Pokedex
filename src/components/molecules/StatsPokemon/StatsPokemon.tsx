@@ -17,8 +17,8 @@ function StatsPokemon(props: {
     return (
         <div className="m-stats__container">
             <Stat title={'N°'} stat={props.stats.number} />
+            <Stat title={'LEVEL'} stat={props.stats.experience} />
             <Stat title={'TYPE'} stat={props.stats.type} />
-            <Stat title={'EXPERIENCE'} stat={props.stats.experience} />
             <Stat title={'ABILITY'} stat={props.stats.ability} />
             <Stat title={'HEIGHT'} stat={props.stats.height} />
             <Stat title={'WEIGHT'} stat={props.stats.weight} />

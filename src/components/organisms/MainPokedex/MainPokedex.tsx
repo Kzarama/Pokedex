@@ -1,7 +1,6 @@
 import './MainPokedex.sass';
 
 // Components
-import Title from '../../atoms/Title/Title';
 import StatsPokemon from '../../molecules/StatsPokemon/StatsPokemon';
 
 // Main of Pokedex
@@ -23,7 +22,7 @@ function MainPokedex(props: {
         <div className="o-main__container">
             <div className="o-main_title_pokemon__container">
                 <div className="o-titlebar__container">
-                    <h2>{props.text}</h2>
+                    <h1>{props.text}</h1>
                 </div>
                 <img
                     className="o-pokemon__img"
