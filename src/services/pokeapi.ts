@@ -15,7 +15,7 @@ export const getPokemonById = (id: string) => {
 		height: 0,
 		weight: 0,
 	};
-	return fetch(`${url}/pokemon/${id}`)
+	return fetch(`${url}pokemon/${id}`)
 		.then((result) => result.json())
 		.then((data) => {
 			pokemon.name = data["name"];
@@ -42,7 +42,7 @@ export const getRandomPokemon = async () => {
 		height: 0,
 		weight: 0,
 	};
-	return fetch(`${url}/pokemon/${getRandomInt()}`)
+	return fetch(`${url}pokemon/${getRandomInt()}`)
 		.then((result) => result.json())
 		.then((data) => {
 			pokemon.name = data["name"];
