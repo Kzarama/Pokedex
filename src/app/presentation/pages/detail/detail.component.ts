@@ -1,12 +1,12 @@
+import { PokemonTypeComponent } from '@/components/atoms/pokemon-type/pokemon-type.component';
+import { Pokemon } from '@/core/models/pokemon.model';
+import { FirestoreService } from '@/data/datasource/firestore.service';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FirestoreService } from '../../../data/datasource/firestore.service';
-import { Pokemon } from '../../../core/models/pokemon.model';
-import { colors } from '@/core/models/colors';
 
 @Component({
   selector: 'app-detail',
-  imports: [],
+  imports: [PokemonTypeComponent],
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.scss',
 })
@@ -23,7 +23,6 @@ export class DetailComponent implements OnInit {
     available: false,
     obtained: false,
   });
-  colors: any = colors;
 
   private firestoreService: FirestoreService = inject(FirestoreService);
 

@@ -1,4 +1,4 @@
-import { PokemonCardComponent } from '@/components/atoms/pokemon-card/pokemon-card.component';
+import { PokemonCardComponent } from '@/components/molecules/pokemon-card/pokemon-card.component';
 import { Pokemon } from '@/core/models/pokemon.model';
 import { FirestoreService } from '@/data/datasource/firestore.service';
 import { CommonModule } from '@angular/common';

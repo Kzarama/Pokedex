@@ -22,13 +22,7 @@
       />
     </div>
 
-    <div class="types">
-      @for (type of pokemon().types; track pokemon().sprites) {
-      <span [style]="{ 'background-color': colors[type] }" class="type">{{
-        type
-      }}</span>
-      }
-    </div>
+    <app-pokemon-type [types]="pokemon().types" />
   </div>
 </div>
 
