@@ -26,17 +26,15 @@ export class FirestoreService {
     return collectionData(q, { idField: 'id' }) as Observable<Pokemon[]>;
   }
 
-  loadPokemon(id: number): Observable<Pokemon | null> {
+  loadPokemon(id: number): Observable<Pokemon> {
     const pokemonDocRef = doc(this.firestore, 'Pokedex', String(id));
 
     return from(getDoc(pokemonDocRef)).pipe(
       map((docSnap) => {
         if (docSnap.exists()) {
           return { id: docSnap.id, ...docSnap.data() } as Pokemon;
-        } else {
-          console.log(`No se encontró ningún Pokémon con ID: ${id}`);
-          return null;
         }
+        throw new Error('No se ha encontrado el Pokemon');
       })
     );
   }

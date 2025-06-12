@@ -1,22 +1,39 @@
-<h1>{{ pokemon()?.name }} - {{ pokemon()?.id }}</h1>
-<img [src]="pokemon()?.avatar" [alt]="pokemon()?.name" />
+<h1>#{{ pokemon().id }} {{ pokemon().name }}</h1>
 
-available
-<input
-  type="checkbox"
-  [checked]="pokemon()?.available"
-  (click)="updatePokemon(pokemon()!.id, 'available', pokemon()!.available)"
-/>
+<div class="pokemon">
+  <img class="avatar" [src]="pokemon().avatar" [alt]="pokemon().name" />
 
-obtained
-<input
-  type="checkbox"
-  [checked]="pokemon()?.obtained"
-  (click)="updatePokemon(pokemon()!.id, 'obtained', pokemon()!.obtained)"
-/>
+  <div class="info">
+    <div class="checks">
+      <span>Disponible</span>
+      <input
+        type="checkbox"
+        [checked]="pokemon().available"
+        (click)="updatePokemon(pokemon().id, 'available', pokemon().available)"
+      />
+    </div>
 
-@for (type of pokemon()?.types; track pokemon()?.sprites) {
-<p>{{ type }}</p>
-} @for (sprite of pokemon()?.sprites; track pokemon()?.sprites) {
-<img [src]="sprite" [alt]="pokemon()?.name" />
-}
+    <div class="checks">
+      <span>Obtenido</span>
+      <input
+        type="checkbox"
+        [checked]="pokemon().obtained"
+        (click)="updatePokemon(pokemon().id, 'obtained', pokemon().obtained)"
+      />
+    </div>
+
+    <div class="types">
+      @for (type of pokemon().types; track pokemon().sprites) {
+      <span [style]="{ 'background-color': colors[type] }" class="type">{{
+        type
+      }}</span>
+      }
+    </div>
+  </div>
+</div>
+
+<div class="sprites">
+  @for (sprite of pokemon().sprites; track pokemon().sprites) {
+  <img [src]="sprite" [alt]="pokemon().name" />
+  }
+</div>

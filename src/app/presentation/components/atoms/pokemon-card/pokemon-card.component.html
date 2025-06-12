@@ -1,0 +1,45 @@
+<li class="pokemon-item">
+  <a [routerLink]="['details/' + pokemon.id]">
+    <div
+      [style]="{ 'background-color': pokemon.color }"
+      class="pokemon-container"
+    >
+      <div class="pokemon-info">
+        <div class="pokemon-name">
+          <span>#{{ pokemon.id }}</span>
+          <span>{{ pokemon.name }}</span>
+        </div>
+
+        <div class="pokemon-types">
+          @for (type of pokemon.types; track type) {
+          <span>{{ type }}</span>
+          }
+        </div>
+
+        <div class="pokemon-checks">
+          <div
+            class="pokemon-check"
+            (click)="
+              updatePokemon($event, pokemon.id, 'available', pokemon.available)
+            "
+          >
+            Disponible
+            <input type="checkbox" [checked]="pokemon.available" />
+          </div>
+
+          <div
+            class="pokemon-check"
+            (click)="
+              updatePokemon($event, pokemon.id, 'obtained', pokemon.obtained)
+            "
+          >
+            Obtenido
+            <input type="checkbox" [checked]="pokemon.obtained" />
+          </div>
+        </div>
+      </div>
+
+      <img class="pokemon-image" [src]="pokemon.avatar" [alt]="pokemon.name" />
+    </div>
+  </a>
+</li>

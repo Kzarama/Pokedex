@@ -2,6 +2,7 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FirestoreService } from '../../../data/datasource/firestore.service';
 import { Pokemon } from '../../../core/models/pokemon.model';
+import { colors } from '@/core/models/colors';
 
 @Component({
   selector: 'app-detail',
@@ -12,7 +13,17 @@ import { Pokemon } from '../../../core/models/pokemon.model';
 export class DetailComponent implements OnInit {
   pokemonId = -1;
   route: ActivatedRoute = inject(ActivatedRoute);
-  pokemon = signal<Pokemon | null>(null);
+  pokemon = signal<Pokemon>({
+    id: '',
+    name: '',
+    avatar: '',
+    color: '',
+    types: [],
+    sprites: [],
+    available: false,
+    obtained: false,
+  });
+  colors: any = colors;
 
   private firestoreService: FirestoreService = inject(FirestoreService);
 
