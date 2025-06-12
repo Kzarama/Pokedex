@@ -1,0 +1,42 @@
+<h1>Pokedex</h1>
+
+@if (isLoading()) {
+<p>Cargando Pokémon...</p>
+} @else if (error()) {
+<p style="color: red">{{ error() }}</p>
+} @else if (pokemons().length === 0) {
+<p>No se encontraron Pokémon.</p>
+} @else {
+<ul class="pokemon-list">
+  @for (pokemon of pokemons(); track pokemon.id) {
+  <li class="pokemon-item">
+    <a [routerLink]="['details/' + pokemon.id]">
+      <div
+        [style]="{ 'background-color': pokemon.color }"
+        class="pokemon-container"
+      >
+        <img
+          class="pokemon-image"
+          [src]="pokemon.avatar"
+          [alt]="pokemon.name"
+        />
+
+        <div>
+          <input
+            type="checkbox"
+            [checked]="pokemon.available"
+            (click)="updatePokemon(pokemon.id, 'available', pokemon.available)"
+          />
+          <input
+            type="checkbox"
+            [checked]="pokemon.obtained"
+            (click)="updatePokemon(pokemon.id, 'obtained', pokemon.obtained)"
+          />
+          <p>{{ pokemon.id }} - {{ pokemon.name }}</p>
+        </div>
+      </div></a
+    >
+  </li>
+  }
+</ul>
+}
