@@ -1,0 +1,22 @@
+<h1>{{ pokemon()?.name }} - {{ pokemon()?.id }}</h1>
+<img [src]="pokemon()?.avatar" [alt]="pokemon()?.name" />
+
+available
+<input
+  type="checkbox"
+  [checked]="pokemon()?.available"
+  (click)="updatePokemon(pokemon()!.id, 'available', pokemon()!.available)"
+/>
+
+obtained
+<input
+  type="checkbox"
+  [checked]="pokemon()?.obtained"
+  (click)="updatePokemon(pokemon()!.id, 'obtained', pokemon()!.obtained)"
+/>
+
+@for (type of pokemon()?.types; track pokemon()?.sprites) {
+<p>{{ type }}</p>
+} @for (sprite of pokemon()?.sprites; track pokemon()?.sprites) {
+<img [src]="sprite" [alt]="pokemon()?.name" />
+}

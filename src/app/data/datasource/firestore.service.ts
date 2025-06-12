@@ -5,11 +5,12 @@ import {
   doc,
   DocumentReference,
   Firestore,
+  getDoc,
   orderBy,
   query,
   updateDoc,
 } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { from, map, Observable } from 'rxjs';
 import { Pokemon } from '../../core/models/pokemon.model';
 
 @Injectable({
@@ -23,6 +24,21 @@ export class FirestoreService {
     const q = query(pokedexCollection, orderBy('uid', 'asc'));
 
     return collectionData(q, { idField: 'id' }) as Observable<Pokemon[]>;
+  }
+
+  loadPokemon(id: number): Observable<Pokemon | null> {
+    const pokemonDocRef = doc(this.firestore, 'Pokedex', String(id));
+
+    return from(getDoc(pokemonDocRef)).pipe(
+      map((docSnap) => {
+        if (docSnap.exists()) {
+          return { id: docSnap.id, ...docSnap.data() } as Pokemon;
+        } else {
+          console.log(`No se encontró ningún Pokémon con ID: ${id}`);
+          return null;
+        }
+      })
+    );
   }
 
   async updatePokemon(
