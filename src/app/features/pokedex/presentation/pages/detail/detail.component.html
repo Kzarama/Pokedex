@@ -1,0 +1,38 @@
+<h1 [style]="{ color: pokemon().color }">
+  #{{ pokemon().id }} {{ pokemon().name }}
+</h1>
+
+<div class="pokemon">
+  <img class="avatar" [src]="pokemon().avatar" [alt]="pokemon().name" />
+
+  <div class="info">
+    <div class="checks">
+      <app-check
+        [id]="pokemon().id"
+        text="Disponible:"
+        checkId="available"
+        [value]="pokemon().available"
+        [color]="pokemon().color"
+      />
+
+      <app-check
+        [id]="pokemon().id"
+        text="Obtenido:"
+        checkId="obtained"
+        [value]="pokemon().obtained"
+        [color]="pokemon().color"
+      />
+    </div>
+
+    <div class="types">
+      <span>Tipos:</span>
+      <app-pokemon-type [types]="pokemon().types" textSize="20px" />
+    </div>
+  </div>
+</div>
+
+<div class="sprites">
+  @for (sprite of pokemon().sprites; track pokemon().sprites) {
+  <img [src]="sprite" [alt]="pokemon().name" />
+  }
+</div>

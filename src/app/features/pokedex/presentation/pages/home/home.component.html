@@ -1,0 +1,14 @@
+<div class="title">
+  <h1>{{ homeTitle }}</h1>
+  <img src="pokeball.png" alt="pokeball" />
+</div>
+
+@if (isLoading()) {
+<p>Cargando Pokémon...</p>
+} @else {
+<ul class="pokemon-list">
+  @for (pokemon of pokemons(); track pokemon.id) {
+  <app-pokemon-card [pokemon]="pokemon" />
+  }
+</ul>
+}

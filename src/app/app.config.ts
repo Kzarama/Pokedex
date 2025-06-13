@@ -4,6 +4,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -11,12 +12,12 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideFirebaseApp(() =>
       initializeApp({
-        projectId: 'pokedex-app-kz',
-        appId: '1:1008231510677:web:5eecae2e0ba6f09905219c',
-        storageBucket: 'pokedex-app-kz.firebasestorage.app',
-        apiKey: 'AIzaSyBzVDTF-sP49XdSekNWW5ljKFA1vP62P4M',
-        authDomain: 'pokedex-app-kz.firebaseapp.com',
-        messagingSenderId: '1008231510677',
+        projectId: environment.firebase.projectId,
+        appId: environment.firebase.appId,
+        storageBucket: environment.firebase.storageBucket,
+        apiKey: environment.firebase.apiKey,
+        authDomain: environment.firebase.authDomain,
+        messagingSenderId: environment.firebase.messagingSenderId,
       })
     ),
     provideFirestore(() => getFirestore()),

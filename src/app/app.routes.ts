@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './presentation/pages/home/home.component';
-import { DetailComponent } from './presentation/pages/detail/detail.component';
-import { LayoutComponent } from '@/components/templates/layout/layout.component';
+import { LayoutComponent } from 'features/pokedex/presentation/components/templates/layout/layout.component';
+import { DetailComponent } from 'features/pokedex/presentation/pages/detail/detail.component';
+import { HomeComponent } from 'features/pokedex/presentation/pages/home/home.component';
 
 export const routes: Routes = [
   {

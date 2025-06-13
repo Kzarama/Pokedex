@@ -1,0 +1,35 @@
+<li class="item">
+  <a [routerLink]="['details/' + pokemon.id]">
+    <div
+      [style]="{ 'background-color': pokemon.color, color: fontColor }"
+      class="container"
+    >
+      <div class="info">
+        <div class="title">
+          <span class="id">#{{ pokemon.id }}</span>
+          <span>{{ pokemon.name }}</span>
+        </div>
+
+        <app-pokemon-type [types]="pokemon.types" />
+
+        <div class="checks">
+          <app-check
+            [id]="pokemon.id"
+            text="Disponible:"
+            checkId="available"
+            [value]="pokemon.available"
+          />
+
+          <app-check
+            [id]="pokemon.id"
+            text="Obtenido:"
+            checkId="obtained"
+            [value]="pokemon.obtained"
+          />
+        </div>
+      </div>
+
+      <img class="image" [src]="pokemon.avatar" [alt]="pokemon.name" />
+    </div>
+  </a>
+</li>
