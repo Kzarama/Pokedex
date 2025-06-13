@@ -29,3 +29,8 @@ body {
   --mdc-snackbar-container-color: #32a636 !important; /* Fondo verde */
   --mdc-snackbar-supporting-text-color: black !important; /* Texto blanco */
 }
+
+.card-snack-error {
+  --mdc-snackbar-container-color: #b00000 !important; /* Fondo verde */
+  --mdc-snackbar-supporting-text-color: white !important; /* Texto blanco */
+}

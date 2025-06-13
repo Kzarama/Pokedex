@@ -1,8 +1,10 @@
 import { PokemonCardComponent } from '@/components/molecules/pokemon-card/pokemon-card.component';
+import { FirestoreService } from '@/core/application/services/firestore.service';
 import { Pokemon } from '@/core/models/pokemon.model';
-import { FirestoreService } from '@/data/datasource/firestore.service';
+import { GetPokemonsService } from '@/core/use-cases/get-pokemons.service';
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
+import { NotificationAdapterService } from 'presentation/shared/notification.service';
 
 @Component({
   selector: 'app-root',
@@ -15,24 +17,20 @@ export class HomeComponent implements OnInit {
   pokemons = signal<Pokemon[]>([]);
   isLoading = signal<boolean>(true);
 
-  private firestoreService: FirestoreService = inject(FirestoreService);
+  useCase = inject(GetPokemonsService);
+  private notificationService = inject(NotificationAdapterService);
 
   constructor() {}
 
   ngOnInit(): void {
-    this.loadPokemons();
-  }
-
-  loadPokemons(): void {
     this.isLoading.set(true);
-
-    this.firestoreService.loadPokemons().subscribe({
+    this.useCase.loadPokemons().subscribe({
       next: (data) => {
         this.pokemons.set(data);
         this.isLoading.set(false);
       },
-      error: (err) => {
-        console.error('Error fetching pokemons:', err);
+      error: () => {
+        this.notificationService.openErrorSnackBar();
         this.isLoading.set(false);
       },
     });

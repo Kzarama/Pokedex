@@ -1,3 +1,4 @@
+import { Pokemon } from '@/core/models/pokemon.model';
 import { inject, Injectable } from '@angular/core';
 import {
   collection,
@@ -11,7 +12,6 @@ import {
   updateDoc,
 } from '@angular/fire/firestore';
 import { from, map, Observable } from 'rxjs';
-import { Pokemon } from '../../core/models/pokemon.model';
 
 @Injectable({
   providedIn: 'root',
@@ -34,7 +34,7 @@ export class FirestoreService {
         if (docSnap.exists()) {
           return { id: docSnap.id, ...docSnap.data() } as Pokemon;
         }
-        throw new Error('No se ha encontrado el Pokemon');
+        throw Error('No se ha encontrado el Pokemon');
       })
     );
   }
@@ -53,8 +53,7 @@ export class FirestoreService {
 
       await updateDoc(pokemonDocRef, dataToUpdate);
     } catch (e) {
-      console.error(`Error al actualizar documento Pokémon ${pokemon.id}: `, e);
-      throw e;
+      throw Error(`Error al actualizar documento Pokémon ${pokemon.id}: `);
     }
   }
 }

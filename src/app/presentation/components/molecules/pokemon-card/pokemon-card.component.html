@@ -13,25 +13,19 @@
         <app-pokemon-type [types]="pokemon.types" />
 
         <div class="pokemon-checks">
-          <div
-            class="pokemon-check"
-            (click)="
-              updatePokemon($event, pokemon.id, 'available', pokemon.available)
-            "
-          >
-            Disponible
-            <input type="checkbox" [checked]="pokemon.available" />
-          </div>
+          <app-check
+            [id]="pokemon.id"
+            text="Disponible:"
+            checkId="available"
+            [value]="pokemon.available"
+          />
 
-          <div
-            class="pokemon-check"
-            (click)="
-              updatePokemon($event, pokemon.id, 'obtained', pokemon.obtained)
-            "
-          >
-            Obtenido
-            <input type="checkbox" [checked]="pokemon.obtained" />
-          </div>
+          <app-check
+            [id]="pokemon.id"
+            text="Obtenido:"
+            checkId="obtained"
+            [value]="pokemon.obtained"
+          />
         </div>
       </div>
 

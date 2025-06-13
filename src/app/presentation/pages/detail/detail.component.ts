@@ -1,12 +1,14 @@
+import { CheckComponent } from '@/components/atoms/check/check.component';
 import { PokemonTypeComponent } from '@/components/atoms/pokemon-type/pokemon-type.component';
+import { FirestoreService } from '@/core/application/services/firestore.service';
 import { Pokemon } from '@/core/models/pokemon.model';
-import { FirestoreService } from '@/data/datasource/firestore.service';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NotificationAdapterService } from 'presentation/shared/notification.service';
 
 @Component({
   selector: 'app-detail',
-  imports: [PokemonTypeComponent],
+  imports: [PokemonTypeComponent, CheckComponent],
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.scss',
 })
@@ -25,6 +27,7 @@ export class DetailComponent implements OnInit {
   });
 
   private firestoreService: FirestoreService = inject(FirestoreService);
+  private notificationService = inject(NotificationAdapterService);
 
   constructor() {
     this.pokemonId = this.route.snapshot.params['id'];
@@ -33,27 +36,9 @@ export class DetailComponent implements OnInit {
   ngOnInit(): void {
     this.firestoreService.loadPokemon(this.pokemonId).subscribe({
       next: (pokemonInfo) => this.pokemon.set(pokemonInfo),
+      error: () => {
+        this.notificationService.openErrorSnackBar();
+      },
     });
-  }
-
-  async updatePokemon(
-    id: string,
-    property: 'available' | 'obtained',
-    value: boolean
-  ) {
-    this.pokemon.update((poke) => {
-      return poke ? { ...poke, [property]: !value } : poke;
-    });
-
-    const pokemonToUpdate = {
-      id,
-      [property]: !value,
-    };
-
-    try {
-      await this.firestoreService.updatePokemon(pokemonToUpdate);
-    } catch (error) {
-      console.error('Error al actualizar el Pokémon:', error);
-    }
   }
 }
