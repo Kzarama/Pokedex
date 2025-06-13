@@ -13,6 +13,7 @@ export class CheckComponent {
   @Input() text: string = '';
   @Input() checkId: 'available' | 'obtained' = 'available';
   @Input() value: boolean = false;
+  @Input() color: string = '#fff';
   private firestoreService: FirestoreService = inject(FirestoreService);
   private notificationService = inject(NotificationAdapterService);
 

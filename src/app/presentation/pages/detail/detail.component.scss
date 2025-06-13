@@ -1,59 +1,67 @@
-h1 {
-  margin: 20px 0;
-  text-align: center;
-  font-size: 60px;
-  text-transform: capitalize;
-}
-
-.pokemon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 50px;
-
-  .avatar {
-    width: 400px;
-  }
-
-  .info {
-    width: 210px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-
-    .checks {
-      background: #0000007b;
-      padding: 15px;
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .types {
-      background: #0000007b;
-      padding: 15px;
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-  }
-}
-
-.sprites {
-  width: fit-content;
-  max-width: 800px;
-  margin: 0 auto;
-  background: #0000007b;
+.container {
+  color: white;
+  height: 100%;
+  min-height: 100vh;
   padding: 20px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
+  background: #1f1f1f;
 
-  img {
-    height: 100px;
+  h1 {
+    margin: 0;
+    text-align: center;
+    font-size: 60px;
+    text-transform: capitalize;
+  }
+
+  .pokemon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+
+    .avatar {
+      width: 400px;
+    }
+
+    .info {
+      width: 210px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .checks {
+        background: #0000007b;
+        padding: 15px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .types {
+        background: #0000007b;
+        padding: 15px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  }
+
+  .sprites {
+    width: fit-content;
+    max-width: 800px;
+    margin: 0 auto;
+    background: #0000007b;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    img {
+      height: 100px;
+    }
   }
 }

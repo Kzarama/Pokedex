@@ -4,14 +4,14 @@ import {
   collection,
   collectionData,
   doc,
+  docData,
   DocumentReference,
   Firestore,
-  getDoc,
   orderBy,
   query,
   updateDoc,
 } from '@angular/fire/firestore';
-import { from, map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -29,14 +29,7 @@ export class FirestoreService {
   loadPokemon(id: number): Observable<Pokemon> {
     const pokemonDocRef = doc(this.firestore, 'Pokedex', String(id));
 
-    return from(getDoc(pokemonDocRef)).pipe(
-      map((docSnap) => {
-        if (docSnap.exists()) {
-          return { id: docSnap.id, ...docSnap.data() } as Pokemon;
-        }
-        throw Error('No se ha encontrado el Pokemon');
-      })
-    );
+    return docData(pokemonDocRef) as Observable<Pokemon>;
   }
 
   async updatePokemon(

@@ -1,4 +1,9 @@
 <div class="check" (click)="updatePokemon($event, id, checkId, value)">
   <span>{{ text }}</span>
-  <input type="checkbox" [checked]="value" />
+  <input
+    class="checkbox"
+    type="checkbox"
+    [checked]="value"
+    [style]="{ background: color, color: '#fff' }"
+  />
 </div>

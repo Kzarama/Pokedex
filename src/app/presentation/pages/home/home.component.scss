@@ -1,26 +1,32 @@
-.title {
-  margin: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
+.container {
+  color: white;
+  height: 100%;
+  padding: 20px;
+  background: #1f1f1f;
 
-  h1 {
-    margin: 0;
-    text-align: center;
-    font-size: 50px;
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    h1 {
+      margin: 0;
+      text-align: center;
+      font-size: 50px;
+    }
+
+    img {
+      width: 50px;
+      height: 50px;
+    }
   }
 
-  img {
-    width: 50px;
-    height: 50px;
+  .pokemon-list {
+    padding: 10px 100px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
   }
-}
-
-.pokemon-list {
-  padding: 10px 100px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 40px;
 }
