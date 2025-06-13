@@ -39,6 +39,12 @@ header {
     input {
       background: transparent;
       border: none;
+      caret-color: white;
+      color: white;
+
+      &:focus {
+        outline: none;
+      }
     }
 
     .mat-icon {

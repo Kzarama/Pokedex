@@ -1,6 +1,6 @@
 import { PokemonCardComponent } from '@/components/molecules/pokemon-card/pokemon-card.component';
 import { Pokemon } from '@/core/models/pokemon.model';
-import { GetPokemonsService } from '@/core/use-cases/get-pokemons.service';
+import { GetPokemonsService } from '@/core/use-cases/get-pokemons/get-pokemons.service';
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { NotificationAdapterService } from 'presentation/shared/notification.service';
