@@ -9,5 +9,6 @@ import { Component, Input } from '@angular/core';
 })
 export class PokemonTypeComponent {
   @Input() types: string[] = [];
+  @Input() textSize: string = '14px';
   colors: any = colors;
 }

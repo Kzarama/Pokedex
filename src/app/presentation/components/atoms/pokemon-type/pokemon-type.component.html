@@ -1,7 +1,9 @@
 <div class="types">
   @for (type of types; track type) {
-  <span [style]="{ 'background-color': colors[type] }" class="type">{{
-    type
-  }}</span>
+  <span
+    [style]="{ 'background-color': colors[type], 'font-size': textSize }"
+    class="type"
+    >{{ type }}</span
+  >
   }
 </div>

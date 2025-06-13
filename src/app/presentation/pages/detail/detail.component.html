@@ -5,24 +5,31 @@
 
   <div class="info">
     <div class="checks">
-      <span>Disponible</span>
-      <input
-        type="checkbox"
-        [checked]="pokemon().available"
-        (click)="updatePokemon(pokemon().id, 'available', pokemon().available)"
-      />
+      <div class="check">
+        <span>Disponible:</span>
+        <input
+          type="checkbox"
+          [checked]="pokemon().available"
+          (click)="
+            updatePokemon(pokemon().id, 'available', pokemon().available)
+          "
+        />
+      </div>
+
+      <div class="check">
+        <span>Obtenido:</span>
+        <input
+          type="checkbox"
+          [checked]="pokemon().obtained"
+          (click)="updatePokemon(pokemon().id, 'obtained', pokemon().obtained)"
+        />
+      </div>
     </div>
 
-    <div class="checks">
-      <span>Obtenido</span>
-      <input
-        type="checkbox"
-        [checked]="pokemon().obtained"
-        (click)="updatePokemon(pokemon().id, 'obtained', pokemon().obtained)"
-      />
+    <div class="types">
+      <span>Tipos:</span>
+      <app-pokemon-type [types]="pokemon().types" textSize="20px" />
     </div>
-
-    <app-pokemon-type [types]="pokemon().types" />
   </div>
 </div>
 

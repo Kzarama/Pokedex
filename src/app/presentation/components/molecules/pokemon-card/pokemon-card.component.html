@@ -10,11 +10,7 @@
           <span>{{ pokemon.name }}</span>
         </div>
 
-        <div class="pokemon-types">
-          @for (type of pokemon.types; track type) {
-          <span>{{ type }}</span>
-          }
-        </div>
+        <app-pokemon-type [types]="pokemon.types" />
 
         <div class="pokemon-checks">
           <div

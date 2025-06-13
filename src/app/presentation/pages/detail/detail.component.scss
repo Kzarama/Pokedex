@@ -16,25 +16,49 @@ h1 {
   }
 
   .info {
+    width: 210px;
     display: flex;
     flex-direction: column;
     gap: 10px;
 
     .checks {
-      width: fit-content;
+      background: #0000007b;
+      padding: 15px;
+      border-radius: 10px;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       gap: 10px;
 
-      input {
-        margin: 0;
+      .check {
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        input {
+          margin: 0;
+        }
       }
+    }
+
+    .types {
+      background: #0000007b;
+      padding: 15px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
   }
 }
 
 .sprites {
-  margin: 0 40px;
+  width: fit-content;
+  max-width: 800px;
+  margin: 0 auto;
+  background: #0000007b;
+  padding: 20px;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   gap: 10px;

@@ -3,10 +3,11 @@ import { RouterLink } from '@angular/router';
 import { Pokemon } from 'core/models/pokemon.model';
 import { FirestoreService } from 'data/datasource/firestore.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { PokemonTypeComponent } from '@/components/atoms/pokemon-type/pokemon-type.component';
 
 @Component({
   selector: 'app-pokemon-card',
-  imports: [RouterLink],
+  imports: [PokemonTypeComponent, RouterLink],
   templateUrl: './pokemon-card.component.html',
   styleUrl: './pokemon-card.component.scss',
 })
