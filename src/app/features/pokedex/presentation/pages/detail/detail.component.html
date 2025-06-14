@@ -3,7 +3,12 @@
 </h1>
 
 <div class="pokemon">
-  <img class="avatar" [src]="pokemon().avatar" [alt]="pokemon().name" />
+  <img
+    class="avatar"
+    [style]="{ 'view-transition-name': 'pokemon-image-' + id }"
+    [src]="pokemon().avatar"
+    [alt]="pokemon().name"
+  />
 
   <div class="info">
     <div class="checks">

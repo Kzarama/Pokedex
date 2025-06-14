@@ -7,7 +7,7 @@ import { inject, Injectable } from '@angular/core';
 export class GetPokemonUseCase {
   private firestoreService: FirestoreService = inject(FirestoreService);
 
-  getPokemon(id: number) {
+  getPokemon(id: string) {
     return this.firestoreService.getPokemonById(id);
   }
 }

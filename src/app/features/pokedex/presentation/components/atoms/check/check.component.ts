@@ -1,5 +1,5 @@
-import { UpdatePokemonsUseCase } from 'features/pokedex/application/use-cases/update-pokemon.usecase';
 import { Component, inject, Input } from '@angular/core';
+import { UpdatePokemonsUseCase } from 'features/pokedex/application/use-cases/update-pokemon.usecase';
 import { NotificationAdapterService } from 'features/pokedex/presentation/shared/notification.service';
 
 @Component({

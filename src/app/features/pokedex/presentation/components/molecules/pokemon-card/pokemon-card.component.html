@@ -29,7 +29,12 @@
         </div>
       </div>
 
-      <img class="image" [src]="pokemon.avatar" [alt]="pokemon.name" />
+      <img
+        class="image"
+        [style]="{ 'view-transition-name': 'pokemon-image-' + pokemon.id }"
+        [src]="pokemon.avatar"
+        [alt]="pokemon.name"
+      />
     </div>
   </a>
 </li>

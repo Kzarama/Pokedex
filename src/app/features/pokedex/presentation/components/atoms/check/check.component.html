@@ -4,6 +4,10 @@
     class="checkbox"
     type="checkbox"
     [checked]="value"
-    [style]="{ background: color, color: '#fff' }"
+    [style]="{
+      background: value ? color : 'transparent',
+      border: color + ' 1px solid',
+      color: '#fff'
+    }"
   />
 </div>

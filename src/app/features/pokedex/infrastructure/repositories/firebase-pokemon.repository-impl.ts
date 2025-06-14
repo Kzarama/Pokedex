@@ -27,7 +27,7 @@ export class FirestoreService implements PokemonRepository {
     return collectionData(q, { idField: 'id' }) as Observable<Pokemon[]>;
   }
 
-  getPokemonById(id: number): Observable<Pokemon> {
+  getPokemonById(id: string): Observable<Pokemon> {
     const pokemonDocRef = doc(this.firestore, 'Pokedex', String(id));
 
     return docData(pokemonDocRef, { idField: 'id' }) as Observable<Pokemon>;
