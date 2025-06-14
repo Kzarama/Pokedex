@@ -6,8 +6,7 @@
     [checked]="value"
     [style]="{
       background: value ? color : 'transparent',
-      border: color + ' 1px solid',
-      color: '#fff'
+      border: (color === 'white' ? 'black' : color) + ' 1px solid',
     }"
   />
 </div>
