@@ -1,27 +1,19 @@
+import { createEmptyPokemon } from '@/features/pokedex/domain/factories/pokemon.factory';
 import { Component, Input, SimpleChanges } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Pokemon } from 'features/pokedex/domain/entities/pokemon.model';
 import { getFontColor } from 'shared/utils/get-font-color';
 import { PokemonTypeComponent } from '../../atoms/pokemon-type/pokemon-type.component';
-import { CheckComponent } from '../../atoms/check/check.component';
+import { ChecksComponent } from '../checks/checks.component';
 
 @Component({
   selector: 'app-pokemon-card',
-  imports: [PokemonTypeComponent, CheckComponent, RouterLink],
+  imports: [PokemonTypeComponent, ChecksComponent, RouterLink],
   templateUrl: './pokemon-card.component.html',
   styleUrl: './pokemon-card.component.scss',
 })
 export class PokemonCardComponent {
-  @Input() pokemon: Pokemon = {
-    id: '',
-    name: '',
-    avatar: '',
-    color: '',
-    types: [],
-    sprites: [],
-    available: false,
-    obtained: false,
-  };
+  @Input() pokemon: Pokemon = createEmptyPokemon();
 
   fontColor = '#fff';
 

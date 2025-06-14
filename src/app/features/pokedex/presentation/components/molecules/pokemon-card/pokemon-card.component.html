@@ -12,21 +12,7 @@
 
         <app-pokemon-type [types]="pokemon.types" />
 
-        <div class="checks">
-          <app-check
-            [id]="pokemon.id"
-            text="Disponible:"
-            checkId="available"
-            [value]="pokemon.available"
-          />
-
-          <app-check
-            [id]="pokemon.id"
-            text="Obtenido:"
-            checkId="obtained"
-            [value]="pokemon.obtained"
-          />
-        </div>
+        <app-checks class="checks" [pokemon]="pokemon" />
       </div>
 
       <img

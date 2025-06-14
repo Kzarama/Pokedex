@@ -14,6 +14,8 @@ export class CheckComponent {
   @Input() checkId: 'available' | 'obtained' = 'available';
   @Input() value: boolean = false;
   @Input() color: string = '#fff';
+  @Input() disabled: boolean = false;
+
   private notificationService = inject(NotificationAdapterService);
   private useCase = inject(UpdatePokemonsUseCase);
 
@@ -26,9 +28,14 @@ export class CheckComponent {
     event.preventDefault();
     event.stopPropagation();
 
+    if (this.disabled) {
+      return;
+    }
+
     const pokemonToUpdate = {
       id,
       [property]: !value,
+      ...(property === 'available' && { obtained: false }),
     };
 
     try {
