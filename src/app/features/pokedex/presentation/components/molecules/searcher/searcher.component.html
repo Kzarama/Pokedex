@@ -1,0 +1,10 @@
+<div class="search" (click)="focusInput()">
+  <input
+    #myInputField
+    [(ngModel)]="searchControl"
+    (ngModelChange)="onSearchInputChange()"
+    type="text"
+    placeholder="Buscar"
+  />
+  <mat-icon aria-hidden="false" aria-label="buscar" fontIcon="search" />
+</div>

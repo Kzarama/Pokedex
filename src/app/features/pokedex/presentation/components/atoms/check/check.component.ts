@@ -17,7 +17,7 @@ export class CheckComponent {
   @Input() disabled: boolean = false;
 
   private notificationService = inject(NotificationAdapterService);
-  private useCase = inject(UpdatePokemonsUseCase);
+  private updatePokemonUseCase = inject(UpdatePokemonsUseCase);
 
   async updatePokemon(
     event: MouseEvent,
@@ -39,7 +39,7 @@ export class CheckComponent {
     };
 
     try {
-      await this.useCase.updatePokemon(pokemonToUpdate);
+      await this.updatePokemonUseCase.updatePokemon(pokemonToUpdate);
       this.notificationService.openSuccessSnackBar();
     } catch (error) {
       this.notificationService.openErrorSnackBar();

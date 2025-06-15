@@ -4,13 +4,9 @@
     <span>{{ headerTitle }}</span>
   </a>
 
-  <div class="search" (click)="focusInput()">
-    <input #myInputField type="text" placeholder="Buscar" />
-    <mat-icon aria-hidden="false" aria-label="buscar" fontIcon="search" />
-  </div>
+  <app-searcher class="search-component" />
 
   <div class="buttons">
-    <a routerLink="#"><span>No disponibles</span></a>
-    <a routerLink="#"><span>No obtenidos</span></a>
+    <a routerLink="/search"><span>Busqueda</span></a>
   </div>
 </header>

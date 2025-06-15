@@ -1,22 +1,14 @@
 import { HEADER_TITLE } from '@/features/pokedex/domain/constants/constants';
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
+import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { SearcherComponent } from '../../molecules/searcher/searcher.component';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, MatIconModule],
+  imports: [RouterLink, SearcherComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
   headerTitle = HEADER_TITLE;
-
-  @ViewChild('myInputField') myInputField!: ElementRef<HTMLInputElement>;
-
-  focusInput() {
-    if (this.myInputField) {
-      this.myInputField.nativeElement.focus();
-    }
-  }
 }

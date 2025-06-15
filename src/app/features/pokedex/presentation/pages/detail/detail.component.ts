@@ -18,11 +18,11 @@ export class DetailComponent implements OnInit {
   route: ActivatedRoute = inject(ActivatedRoute);
   pokemon = signal<Pokemon>(createEmptyPokemon());
 
-  private useCase = inject(GetPokemonUseCase);
+  private getPokemonUseCase = inject(GetPokemonUseCase);
   private notificationService = inject(NotificationAdapterService);
 
   ngOnInit(): void {
-    this.useCase.getPokemon(this.id).subscribe({
+    this.getPokemonUseCase.getPokemon(this.id).subscribe({
       next: (pokemonInfo) => this.pokemon.set(pokemonInfo),
       error: () => {
         this.notificationService.openErrorSnackBar();

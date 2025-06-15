@@ -6,8 +6,14 @@ import {
   withComponentInputBinding,
   withViewTransitions,
 } from '@angular/router';
+import { provideState, provideStore } from '@ngrx/store';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { routes } from './app.routes';
+import {
+  pokedexFeatureKey,
+  pokedexReducer,
+} from './features/pokedex/presentation/state/pokedex/pokedex.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -24,5 +30,15 @@ export const appConfig: ApplicationConfig = {
       })
     ),
     provideFirestore(() => getFirestore()),
+
+    provideStore(),
+    provideState(pokedexFeatureKey, pokedexReducer),
+    provideStoreDevtools({
+      maxAge: 25,
+      autoPause: true,
+      trace: false,
+      traceLimit: 75,
+      connectInZone: true,
+    }),
   ],
 };

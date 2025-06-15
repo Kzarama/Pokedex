@@ -37,28 +37,8 @@ header {
     }
   }
 
-  .search {
-    border-bottom: 2px solid white;
-    display: flex;
-    align-items: center;
+  .search-component {
     width: 20%;
-    cursor: text;
-
-    input {
-      width: 100%;
-      background: transparent;
-      border: none;
-      caret-color: white;
-      color: white;
-
-      &:focus {
-        outline: none;
-      }
-    }
-
-    .mat-icon {
-      color: white !important;
-    }
   }
 
   .buttons {
