@@ -1,14 +1,11 @@
 import { Component } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
-import { RouterLink, RouterOutlet } from '@angular/router';
-import { HEADER_TITLE } from 'features/pokedex/domain/constants/constants';
+import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from '../../organisms/header/header.component';
 
 @Component({
   selector: 'app-layout',
-  imports: [RouterLink, RouterOutlet, MatIconModule],
+  imports: [RouterOutlet, HeaderComponent],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
 })
-export class LayoutComponent {
-  headerTitle = HEADER_TITLE;
-}
+export class LayoutComponent {}

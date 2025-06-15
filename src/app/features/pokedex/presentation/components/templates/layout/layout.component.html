@@ -1,24 +1,9 @@
-<header>
-  <a class="home" routerLink="/">
-    <img class="logo" src="pokeball.png" alt="pokeball logo" />
-    <span>{{ headerTitle }}</span>
-  </a>
+<app-header />
 
-  <div class="search">
-    <input type="text" placeholder="Buscar" />
-    <mat-icon
-      aria-hidden="false"
-      aria-label="Example home icon"
-      fontIcon="search"
-    ></mat-icon>
+<div class="container">
+  <img class="bg-pokeball" src="pokeball-bg.webp" alt="" />
+
+  <div class="content">
+    <router-outlet></router-outlet>
   </div>
-
-  <div class="buttons">
-    <a routerLink="#"><span>No disponibles</span></a>
-    <a routerLink="#"><span>No obtenidos</span></a>
-  </div>
-</header>
-
-<div class="content">
-  <router-outlet></router-outlet>
 </div>

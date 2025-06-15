@@ -1,0 +1,16 @@
+<header>
+  <a class="home" routerLink="/">
+    <img class="logo" src="pokeball.webp" alt="pokeball logo" />
+    <span>{{ headerTitle }}</span>
+  </a>
+
+  <div class="search" (click)="focusInput()">
+    <input #myInputField type="text" placeholder="Buscar" />
+    <mat-icon aria-hidden="false" aria-label="buscar" fontIcon="search" />
+  </div>
+
+  <div class="buttons">
+    <a routerLink="#"><span>No disponibles</span></a>
+    <a routerLink="#"><span>No obtenidos</span></a>
+  </div>
+</header>
