@@ -3,9 +3,10 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
 import * as PokedexActions from '../../../state/pokedex/pokedex.actions';
+import * as PokedexSelectors from '../../../state/pokedex/pokedex.selectors';
 import { PokedexState } from '../../../state/pokedex/pokedex.state';
 
 @Component({
@@ -23,6 +24,18 @@ export class SearcherComponent {
   private router = inject(Router);
 
   constructor() {
+    this.store
+      .pipe(
+        select(PokedexSelectors.selectCurrentPokedexFilters),
+        takeUntilDestroyed()
+      )
+      .subscribe((filters) => {
+        const storeSearchName = filters.name || '';
+        if (this.searchControl !== storeSearchName) {
+          this.searchControl = storeSearchName;
+        }
+      });
+
     this.searchInputSubject
       .pipe(debounceTime(1000), distinctUntilChanged(), takeUntilDestroyed())
       .subscribe((searchTerm) => {
