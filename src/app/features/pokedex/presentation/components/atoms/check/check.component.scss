@@ -24,6 +24,15 @@
     color: black;
   }
 
+  .checkbox:indeterminate::before {
+    content: "⎻";
+    position: absolute;
+    top: -5px;
+    left: 1px;
+    font-size: 22px;
+    color: white;
+  }
+
   &:hover {
     transition: all 500 linear;
     transform: scale(1.1);

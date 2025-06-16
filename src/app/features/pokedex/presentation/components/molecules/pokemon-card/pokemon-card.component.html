@@ -1,5 +1,5 @@
 <li class="item">
-  <a [routerLink]="['details/' + pokemon.id]">
+  <a [routerLink]="['/details/' + pokemon.id]">
     <div
       [style]="{ 'background-color': pokemon.color, color: fontColor }"
       class="container"
@@ -12,7 +12,25 @@
 
         <app-pokemon-type [types]="pokemon.types" />
 
-        <app-checks class="checks" [pokemon]="pokemon" />
+        <div class="checks">
+          <app-check
+            text="Disponible:"
+            [checked]="pokemon.available"
+            color="white"
+            (action)="
+              updatePokemon($event, pokemon.id, 'available', pokemon.available)
+            "
+          />
+
+          <app-check
+            text="Obtenido:"
+            [checked]="pokemon.obtained"
+            color="white"
+            (action)="
+              updatePokemon($event, pokemon.id, 'obtained', pokemon.obtained)
+            "
+          />
+        </div>
       </div>
 
       <img

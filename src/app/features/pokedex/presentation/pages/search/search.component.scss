@@ -15,3 +15,24 @@
     height: 50px;
   }
 }
+
+.container {
+  width: 100%;
+  padding: 0 60px 0 20px;
+  display: flex;
+  gap: 10px;
+
+  .filters-component {
+    flex: 1;
+    max-width: 17%;
+  }
+
+  .empty-message {
+    margin: auto;
+    font-size: 30px;
+  }
+
+  .pokemon-list {
+    width: 80%;
+  }
+}

@@ -1,10 +1,10 @@
-@if (isLoading()) {
-<app-loading />
-} @else {
 <div class="title">
   <h1>{{ homeTitle }}</h1>
   <img src="pokeball.webp" alt="pokeball" />
 </div>
 
+@if (isLoading()) {
+<app-loading />
+} @else {
 <app-pokemon-list [pokemons]="pokemons()" />
 }

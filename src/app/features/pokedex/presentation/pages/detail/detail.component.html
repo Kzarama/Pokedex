@@ -11,7 +11,21 @@
   />
 
   <div class="info">
-    <app-checks class="checks" [pokemon]="pokemon()" [hasColor]="true" />
+    <div class="checks">
+      <app-check
+        text="Disponible:"
+        [checked]="pokemon().available"
+        [color]="pokemon().color"
+        (action)="updatePokemon(pokemon().id, 'available', pokemon().available)"
+      />
+
+      <app-check
+        text="Obtenido:"
+        [checked]="pokemon().obtained"
+        [color]="pokemon().color"
+        (action)="updatePokemon(pokemon().id, 'obtained', pokemon().obtained)"
+      />
+    </div>
 
     <div class="types">
       <span>Tipos:</span>

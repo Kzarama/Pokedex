@@ -1,0 +1,40 @@
+@import "../../../styles/variables.sass";
+
+button {
+  position: relative;
+  font-weight: bolder;
+  background: transparent;
+  border: none;
+  color: white;
+  padding: 0;
+  font-size: 16px;
+  cursor: pointer;
+
+  &::after {
+    content: "";
+    position: absolute;
+    transition: all 0.3s linear;
+    background: white;
+    width: 0;
+    bottom: -8px;
+    left: 0;
+    height: 4px;
+  }
+
+  &:hover {
+    color: $primary-red;
+
+    &::after {
+      width: 100%;
+    }
+  }
+
+  &.active-route {
+    color: $primary-red;
+
+    &::after {
+      transition: none;
+      width: 100%;
+    }
+  }
+}

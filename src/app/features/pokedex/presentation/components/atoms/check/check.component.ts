@@ -1,6 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
-import { UpdatePokemonsUseCase } from 'features/pokedex/application/use-cases/update-pokemon.usecase';
-import { NotificationAdapterService } from 'features/pokedex/presentation/shared/notification.service';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-check',
@@ -9,40 +7,13 @@ import { NotificationAdapterService } from 'features/pokedex/presentation/shared
   styleUrl: './check.component.scss',
 })
 export class CheckComponent {
-  @Input() id: string = '';
   @Input() text: string = '';
-  @Input() checkId: 'available' | 'obtained' = 'available';
-  @Input() value: boolean = false;
+  @Input() checked: boolean = false;
+  @Input() indeterminate: boolean = false;
   @Input() color: string = '#fff';
-  @Input() disabled: boolean = false;
+  @Output() action = new EventEmitter<MouseEvent>();
 
-  private notificationService = inject(NotificationAdapterService);
-  private updatePokemonUseCase = inject(UpdatePokemonsUseCase);
-
-  async updatePokemon(
-    event: MouseEvent,
-    id: string,
-    property: 'available' | 'obtained',
-    value: boolean
-  ) {
-    event.preventDefault();
-    event.stopPropagation();
-
-    if (this.disabled) {
-      return;
-    }
-
-    const pokemonToUpdate = {
-      id,
-      [property]: !value,
-      ...(property === 'available' && { obtained: false }),
-    };
-
-    try {
-      await this.updatePokemonUseCase.updatePokemon(pokemonToUpdate);
-      this.notificationService.openSuccessSnackBar();
-    } catch (error) {
-      this.notificationService.openErrorSnackBar();
-    }
+  executeAction($event: MouseEvent) {
+    this.action.emit($event);
   }
 }

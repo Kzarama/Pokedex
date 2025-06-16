@@ -14,7 +14,10 @@ import {
   where,
 } from '@angular/fire/firestore';
 import { Pokemon } from 'features/pokedex/domain/entities/pokemon.model';
-import { PokemonRepository } from 'features/pokedex/domain/repositories/pokemon.repository';
+import {
+  PokemonFilter,
+  PokemonRepository,
+} from 'features/pokedex/domain/repositories/pokemon.repository';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -56,7 +59,7 @@ export class FirestoreService implements PokemonRepository {
     }
   }
 
-  searchPokemon(filters?: Partial<Pokemon>): Observable<Pokemon[]> {
+  searchPokemon(filters?: PokemonFilter): Observable<Pokemon[]> {
     const pokedexCollection = collection(
       this.firestore,
       'Pokedex'
@@ -69,6 +72,14 @@ export class FirestoreService implements PokemonRepository {
         where('name', '>=', filters.name),
         where('name', '<=', `${filters.name}\uf8ff`)
       );
+    }
+
+    if (typeof filters?.available === 'boolean') {
+      q = query(q, where('available', '==', filters.available));
+    }
+
+    if (typeof filters?.obtained === 'boolean') {
+      q = query(q, where('obtained', '==', filters.obtained));
     }
 
     if (!filters) {

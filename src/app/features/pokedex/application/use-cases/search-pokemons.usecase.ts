@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { FirestoreService } from 'features/pokedex/infrastructure/repositories/firebase-pokemon.repository-impl';
-import { Pokemon } from '../../domain/entities/pokemon.model';
+import { PokemonFilter } from '../../domain/repositories/pokemon.repository';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +8,7 @@ import { Pokemon } from '../../domain/entities/pokemon.model';
 export class SearchPokemonsUseCase {
   private firestoreService: FirestoreService = inject(FirestoreService);
 
-  searchPokemon(filters?: Partial<Pokemon> | undefined) {
+  searchPokemon(filters?: PokemonFilter) {
     return this.firestoreService.searchPokemon(filters);
   }
 }

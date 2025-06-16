@@ -1,0 +1,38 @@
+<div class="filters">
+  <h2>Filtros:</h2>
+
+  <div class="filter-buttons">
+    <app-button
+      text="Aplicar filtros"
+      (click)="applyFilters()"
+      [active]="true"
+    />
+    <app-button
+      text="Restablecer filtros"
+      (click)="resetFilters()"
+      [active]="true"
+    />
+  </div>
+
+  <div class="filter-container">
+    <h3 class="filter-title">Propiedades</h3>
+
+    <div class="filter-options">
+      <app-check
+        [checked]="filterForm.available === true"
+        [indeterminate]="filterForm.available === undefined"
+        text="Disponible"
+        (action)="
+          handleTristateCheckboxChange('available', filterForm.available)
+        "
+      />
+
+      <app-check
+        [checked]="filterForm.obtained === true"
+        [indeterminate]="filterForm.obtained === undefined"
+        text="Obtenido"
+        (action)="handleTristateCheckboxChange('obtained', filterForm.obtained)"
+      />
+    </div>
+  </div>
+</div>

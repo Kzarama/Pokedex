@@ -10,5 +10,11 @@ export interface PokemonRepository {
     pokemon: { id: string } & Partial<Omit<Pokemon, 'id'>>
   ): Promise<void>;
 
-  searchPokemon(filters?: Partial<Pokemon>): Observable<Pokemon[]>;
+  searchPokemon(filters?: PokemonFilter): Observable<Pokemon[]>;
+}
+
+export interface PokemonFilter {
+  available?: boolean;
+  obtained?: boolean;
+  name?: string;
 }

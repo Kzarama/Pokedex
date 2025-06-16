@@ -1,9 +1,9 @@
-import { Pokemon } from '@/features/pokedex/domain/entities/pokemon.model';
+import { PokemonFilter } from '@/features/pokedex/domain/repositories/pokemon.repository';
 import { createAction, props } from '@ngrx/store';
 
 export const applyPokedexFilters = createAction(
   '[Pokedex Page] Apply Pokedex Filters',
-  props<{ filters: Partial<Pokemon> }>()
+  props<{ filters: PokemonFilter }>()
 );
 
 export const resetPokedexFilters = createAction(

@@ -40,33 +40,4 @@ header {
   .search-component {
     width: 20%;
   }
-
-  .buttons {
-    display: flex;
-    gap: 30px;
-
-    a {
-      position: relative;
-      font-weight: bolder;
-
-      &::after {
-        content: "";
-        position: absolute;
-        transition: all 0.3s linear;
-        background: white;
-        width: 0;
-        bottom: -8px;
-        left: 0;
-        height: 4px;
-      }
-
-      &:hover {
-        color: $primary-red;
-
-        &::after {
-          width: 100%;
-        }
-      }
-    }
-  }
 }

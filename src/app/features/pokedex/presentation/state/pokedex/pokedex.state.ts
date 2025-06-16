@@ -1,7 +1,7 @@
-import { Pokemon } from '@/features/pokedex/domain/entities/pokemon.model';
+import { PokemonFilter } from '@/features/pokedex/domain/repositories/pokemon.repository';
 
 export interface PokedexState {
-  filters: Partial<Pokemon>;
+  filters: PokemonFilter;
 }
 
 export const initialPokedexState: PokedexState = {

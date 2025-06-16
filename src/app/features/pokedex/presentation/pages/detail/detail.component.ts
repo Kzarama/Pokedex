@@ -1,15 +1,16 @@
+import { UpdatePokemonsUseCase } from '@/features/pokedex/application/use-cases/update-pokemon.usecase';
 import { createEmptyPokemon } from '@/features/pokedex/domain/factories/pokemon.factory';
 import { Component, inject, Input, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GetPokemonUseCase } from 'features/pokedex/application/use-cases/get-pokemon-by-id.usecase';
 import { Pokemon } from 'features/pokedex/domain/entities/pokemon.model';
+import { CheckComponent } from '../../components/atoms/check/check.component';
 import { PokemonTypeComponent } from '../../components/atoms/pokemon-type/pokemon-type.component';
-import { ChecksComponent } from '../../components/molecules/checks/checks.component';
 import { NotificationAdapterService } from '../../shared/notification.service';
 
 @Component({
   selector: 'app-detail',
-  imports: [PokemonTypeComponent, ChecksComponent],
+  imports: [PokemonTypeComponent, CheckComponent],
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.scss',
 })
@@ -19,6 +20,7 @@ export class DetailComponent implements OnInit {
   pokemon = signal<Pokemon>(createEmptyPokemon());
 
   private getPokemonUseCase = inject(GetPokemonUseCase);
+  private updatePokemonUseCase = inject(UpdatePokemonsUseCase);
   private notificationService = inject(NotificationAdapterService);
 
   ngOnInit(): void {
@@ -28,5 +30,28 @@ export class DetailComponent implements OnInit {
         this.notificationService.openErrorSnackBar();
       },
     });
+  }
+
+  async updatePokemon(
+    id: string,
+    property: 'available' | 'obtained',
+    checked: boolean
+  ) {
+    if (property === 'obtained' && !this.pokemon().available) {
+      return;
+    }
+
+    const pokemonToUpdate = {
+      id,
+      [property]: !checked,
+      ...(property === 'available' && { obtained: false }),
+    };
+
+    try {
+      await this.updatePokemonUseCase.updatePokemon(pokemonToUpdate);
+      this.notificationService.openSuccessSnackBar();
+    } catch (error) {
+      this.notificationService.openErrorSnackBar();
+    }
   }
 }

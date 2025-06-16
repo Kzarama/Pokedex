@@ -6,6 +6,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { select, Store } from '@ngrx/store';
 import { catchError, of, switchMap, tap } from 'rxjs';
 import { LoadingComponent } from '../../components/atoms/loading/loading.component';
+import { FiltersComponent } from '../../components/organisms/filters/filters.component';
 import { PokemonListComponent } from '../../components/organisms/pokemon-list/pokemon-list.component';
 import { NotificationAdapterService } from '../../shared/notification.service';
 import * as PokedexSelectors from '../../state/pokedex/pokedex.selectors';
@@ -13,7 +14,7 @@ import { PokedexState } from '../../state/pokedex/pokedex.state';
 
 @Component({
   selector: 'app-search',
-  imports: [LoadingComponent, PokemonListComponent],
+  imports: [LoadingComponent, PokemonListComponent, FiltersComponent],
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss',
 })

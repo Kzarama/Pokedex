@@ -6,7 +6,10 @@
 
   <app-searcher class="search-component" />
 
-  <div class="buttons">
-    <a routerLink="/search"><span>Busqueda</span></a>
-  </div>
+  <app-button
+    text="Busqueda"
+    [active]="router.url === '/search'"
+    (action)="handleClick($event)"
+    param="/search"
+  />
 </header>

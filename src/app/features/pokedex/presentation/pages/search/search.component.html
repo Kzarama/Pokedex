@@ -1,10 +1,16 @@
-@if (isLoading()) {
-<app-loading />
-} @else {
 <div class="title">
   <h1>{{ searchTitle }}</h1>
   <img src="pokeball.webp" alt="pokeball" />
 </div>
 
-<app-pokemon-list [pokemons]="pokemons()" />
-}
+<div class="container">
+  <app-filters class="filters-component" />
+
+  @if (isLoading()) {
+  <app-loading />
+  }@else if (pokemons().length === 0) {
+  <h2 class="empty-message">No hay pokemons, intenta cambiar los filtros.</h2>
+  } @else {
+  <app-pokemon-list class="pokemon-list" [pokemons]="pokemons()" />
+  }
+</div>

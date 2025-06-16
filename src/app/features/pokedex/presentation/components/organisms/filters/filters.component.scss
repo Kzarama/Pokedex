@@ -1,0 +1,30 @@
+@import "../../../styles/variables.sass";
+
+.filters {
+  flex-grow: 1;
+  width: 100%;
+
+  .filter-buttons {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .filter-title {
+    margin: 0 0 10px 0;
+  }
+
+  .filter-container {
+    background: $card-background;
+    padding: 20px;
+    border-radius: 10px;
+
+    .filter-options {
+      padding-left: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+  }
+}
