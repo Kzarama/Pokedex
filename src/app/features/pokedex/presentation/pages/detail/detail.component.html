@@ -1,41 +1,41 @@
-<h1 [style]="{ color: pokemon().color }">
-  #{{ pokemon().id }} {{ pokemon().name }}
+<h1 [style]="{ color: pokemon().pokemon.color }">
+  #{{ pokemon().pokemon.id }} {{ pokemon().pokemon.name }}
 </h1>
 
 <div class="pokemon">
   <img
     class="avatar"
     [style]="{ 'view-transition-name': 'pokemon-image-' + id }"
-    [src]="pokemon().avatar"
-    [alt]="pokemon().name"
+    [src]="pokemon().pokemon.avatar"
+    [alt]="pokemon().pokemon.name"
   />
 
   <div class="info">
     <div class="checks">
       <app-check
         text="Disponible:"
-        [checked]="pokemon().available"
-        [color]="pokemon().color"
-        (action)="updatePokemon(pokemon().id, 'available', pokemon().available)"
+        [checked]="pokemon().pokemon.available"
+        [color]="pokemon().pokemon.color"
+        (action)="updatePokemon('available', pokemon().pokemon.available)"
       />
 
       <app-check
         text="Obtenido:"
-        [checked]="pokemon().obtained"
-        [color]="pokemon().color"
-        (action)="updatePokemon(pokemon().id, 'obtained', pokemon().obtained)"
+        [checked]="pokemon().pokemon.obtained"
+        [color]="pokemon().pokemon.color"
+        (action)="updatePokemon('obtained', pokemon().pokemon.obtained)"
       />
     </div>
 
     <div class="types">
       <span>Tipos:</span>
-      <app-pokemon-type [types]="pokemon().types" textSize="20px" />
+      <app-pokemon-type [types]="pokemon().pokemon.types" textSize="20px" />
     </div>
   </div>
 </div>
 
 <div class="sprites">
-  @for (sprite of pokemon().sprites; track pokemon().sprites) {
-  <img [src]="sprite" [alt]="pokemon().name" />
+  @for (sprite of pokemon().pokemon.sprites; track pokemon().pokemon.sprites) {
+  <img [src]="sprite" [alt]="pokemon().pokemon.name" />
   }
 </div>

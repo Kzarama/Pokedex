@@ -3,7 +3,7 @@ import { Pokemon } from '../entities/pokemon.model';
 export function createEmptyPokemon(): Pokemon {
   return {
     id: '',
-    uid: '',
+    uid: 0,
     name: '',
     avatar: '',
     color: '',
@@ -11,5 +11,6 @@ export function createEmptyPokemon(): Pokemon {
     sprites: [],
     available: false,
     obtained: false,
+    regionName: '',
   };
 }

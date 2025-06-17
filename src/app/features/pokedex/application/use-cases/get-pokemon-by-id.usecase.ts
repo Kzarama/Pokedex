@@ -1,13 +1,13 @@
-import { FirestoreService } from 'features/pokedex/infrastructure/repositories/firebase-pokemon.repository-impl';
 import { inject, Injectable } from '@angular/core';
+import { FirestoreService } from 'features/pokedex/infrastructure/repositories/firebase-pokemon.repository-impl';
 
 @Injectable({
   providedIn: 'root',
 })
-export class GetPokemonUseCase {
+export class GetPokemonByIdUseCase {
   private firestoreService: FirestoreService = inject(FirestoreService);
 
-  getPokemon(id: string) {
+  getPokemonById(id: string) {
     return this.firestoreService.getPokemonById(id);
   }
 }

@@ -2,7 +2,7 @@ import { GetPokemonsUseCase } from '@/features/pokedex/application/use-cases/get
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { HOME_TITLE } from 'features/pokedex/domain/constants/constants';
-import { Pokemon } from 'features/pokedex/domain/entities/pokemon.model';
+import { RegionalPokedex } from 'features/pokedex/domain/entities/pokemon.model';
 import { LoadingComponent } from '../../components/atoms/loading/loading.component';
 import { PokemonListComponent } from '../../components/organisms/pokemon-list/pokemon-list.component';
 import { NotificationAdapterService } from '../../shared/notification.service';
@@ -15,7 +15,7 @@ import { NotificationAdapterService } from '../../shared/notification.service';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
-  pokemons = signal<Pokemon[]>([]);
+  pokemons = signal<RegionalPokedex[]>([]);
   isLoading = signal<boolean>(true);
   homeTitle = HOME_TITLE;
 
@@ -23,10 +23,10 @@ export class HomeComponent implements OnInit {
   private notificationService = inject(NotificationAdapterService);
 
   ngOnInit(): void {
-    this.loadPokemons();
+    this.getAllPokemons();
   }
 
-  loadPokemons() {
+  getAllPokemons() {
     this.isLoading.set(true);
     this.getPokemonsUseCase.getAllPokemons().subscribe({
       next: (data) => {

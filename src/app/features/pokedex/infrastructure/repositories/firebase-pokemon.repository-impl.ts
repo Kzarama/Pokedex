@@ -2,24 +2,28 @@ import { inject, Injectable } from '@angular/core';
 import {
   collection,
   collectionData,
+  collectionGroup,
   CollectionReference,
   doc,
-  docData,
   DocumentReference,
   Firestore,
   orderBy,
-  Query,
   query,
   updateDoc,
   where,
 } from '@angular/fire/firestore';
-import { Pokemon } from 'features/pokedex/domain/entities/pokemon.model';
+import {
+  Pokemon,
+  PokemonWithRegion,
+  RegionalPokedex,
+  RegionDocumentFirestore,
+} from 'features/pokedex/domain/entities/pokemon.model';
 import {
   PokemonFilter,
   PokemonRepository,
 } from 'features/pokedex/domain/repositories/pokemon.repository';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { combineLatest, Observable, of, throwError } from 'rxjs';
+import { catchError, map, switchMap, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -27,74 +31,181 @@ import { map } from 'rxjs/operators';
 export class FirestoreService implements PokemonRepository {
   private firestore: Firestore = inject(Firestore);
 
-  getPokemons(): Observable<Pokemon[]> {
-    const pokedexCollection = collection(
+  getPokemons(): Observable<RegionalPokedex[]> {
+    const regionsCollectionRef = collection(
       this.firestore,
       'Pokedex'
-    ) as CollectionReference<Pokemon>;
-    const q = query(pokedexCollection, orderBy('uid', 'asc'));
+    ) as CollectionReference<RegionDocumentFirestore>;
+    const regionsQuery = query(regionsCollectionRef, orderBy('uid', 'asc'));
 
-    return collectionData(q, { idField: 'id' });
+    return collectionData(regionsQuery, { idField: 'id' }).pipe(
+      switchMap((regionDocs: RegionDocumentFirestore[]) => {
+        const regionalPokemonObservables: Observable<RegionalPokedex>[] =
+          regionDocs.map((regionDoc) => {
+            const pokemonsSubcollectionRef = collection(
+              this.firestore,
+              'Pokedex',
+              regionDoc.id,
+              'pokemons'
+            ) as CollectionReference<Pokemon>;
+
+            const pokemonsQuery = query(
+              pokemonsSubcollectionRef,
+              orderBy('uid', 'asc')
+            );
+
+            return collectionData(pokemonsQuery, { idField: 'uid' }).pipe(
+              map((pokemonsInRegion: Pokemon[]) => ({
+                id: regionDoc.id,
+                uid: regionDoc.uid,
+                group: regionDoc.group,
+                pokemons: pokemonsInRegion,
+              })),
+              catchError(() => {
+                return of({
+                  id: regionDoc.id,
+                  uid: regionDoc.uid,
+                  group: regionDoc.group,
+                  pokemons: [],
+                } as RegionalPokedex);
+              })
+            );
+          });
+
+        if (regionalPokemonObservables.length === 0) {
+          return of([]);
+        }
+        return combineLatest(regionalPokemonObservables);
+      }),
+      catchError((error) =>
+        throwError(
+          () =>
+            new Error(error.message || 'Error al obtener Pokémon por regiones.')
+        )
+      )
+    );
   }
 
-  getPokemonById(id: string): Observable<Pokemon> {
-    const pokemonDocRef = doc(this.firestore, 'Pokedex', String(id));
+  getPokemonById(id: string): Observable<PokemonWithRegion> {
+    const pokemonsGroupRef = collectionGroup(
+      this.firestore,
+      'pokemons'
+    ) as CollectionReference<Pokemon>;
+    const q = query(pokemonsGroupRef, where('uid', '==', id));
 
-    return docData(pokemonDocRef, { idField: 'id' }) as Observable<Pokemon>;
+    return collectionData(q, { idField: 'uid' }).pipe(
+      take(1),
+      map((pokemonDocs: Pokemon[]) => {
+        if (pokemonDocs.length === 0) {
+          throw new Error(`Pokémon con UID '${id}' no encontrado.`);
+        }
+        const foundPokemon = pokemonDocs[0];
+
+        return {
+          pokemon: foundPokemon,
+          regionName: foundPokemon.regionName,
+        } as PokemonWithRegion;
+      }),
+      catchError((error) => {
+        return throwError(
+          () =>
+            new Error(error.message || `Error al obtener Pokémon con ID ${id}.`)
+        );
+      })
+    );
   }
 
   async updatePokemon(
-    pokemon: { id: string } & Partial<Omit<Pokemon, 'id'>>
+    regionId: string,
+    id: string,
+    updates: { available?: boolean; obtained?: boolean }
   ): Promise<void> {
-    try {
-      const pokemonDocRef = doc(
-        this.firestore,
-        'Pokedex',
-        pokemon.id
-      ) as DocumentReference<Pokemon>;
+    const pokemonDocId = String(id);
 
-      await updateDoc(pokemonDocRef, pokemon);
-    } catch (e) {
-      throw Error(`Error al actualizar documento Pokémon ${pokemon.id}: `);
+    const pokemonDocRef = doc(
+      this.firestore,
+      'Pokedex',
+      regionId,
+      'pokemons',
+      pokemonDocId
+    ) as DocumentReference<Pokemon>;
+
+    try {
+      await updateDoc(pokemonDocRef, updates);
+    } catch (e: any) {
+      throw new Error(
+        `Error al actualizar Pokémon UID '${id}' en la región '${regionId}': ${
+          e.message || e
+        }`
+      );
     }
   }
 
-  searchPokemon(filters?: PokemonFilter): Observable<Pokemon[]> {
-    const pokedexCollection = collection(
+  searchPokemon(filters?: PokemonFilter): Observable<RegionalPokedex[]> {
+    const regionsCollectionRef = collection(
       this.firestore,
       'Pokedex'
-    ) as CollectionReference<Pokemon>;
-    let q: Query<Pokemon> = query(pokedexCollection);
+    ) as CollectionReference<RegionDocumentFirestore>;
 
-    if (filters?.name) {
-      q = query(
-        q,
-        where('name', '>=', filters.name),
-        where('name', '<=', `${filters.name}\uf8ff`)
-      );
-    }
+    const regionsQuery = query(regionsCollectionRef, orderBy('uid', 'asc'));
 
-    if (typeof filters?.available === 'boolean') {
-      q = query(q, where('available', '==', filters.available));
-    }
+    return collectionData(regionsQuery, { idField: 'id' }).pipe(
+      switchMap((regionDocs: RegionDocumentFirestore[]) => {
+        const regionalPokemonObservables: Observable<RegionalPokedex>[] =
+          regionDocs.map((regionDoc) => {
+            const pokemonsSubcollectionRef = collection(
+              this.firestore,
+              'Pokedex',
+              regionDoc.id,
+              'pokemons'
+            ) as CollectionReference<Pokemon>;
 
-    if (typeof filters?.obtained === 'boolean') {
-      q = query(q, where('obtained', '==', filters.obtained));
-    }
+            let pokemonsQuery = query(pokemonsSubcollectionRef);
 
-    if (!filters) {
-      q = query(q, orderBy('uid', 'asc'));
-    }
+            pokemonsQuery = filters?.name
+              ? query(
+                  pokemonsQuery,
+                  orderBy('uid', 'asc'),
+                  where('name', '>=', filters.name),
+                  where('name', '<=', `${filters.name}\uf8ff`)
+                )
+              : query(pokemonsQuery, orderBy('uid', 'asc'));
 
-    return collectionData(q, { idField: 'id' }).pipe(
-      map((pokemons) => {
-        if (filters) {
-          return pokemons.sort(
-            (a, b) => (Number(a.uid) || 0) - (Number(b.uid) || 0)
-          );
+            if (typeof filters?.available === 'boolean') {
+              pokemonsQuery = query(
+                pokemonsQuery,
+                where('available', '==', filters.available)
+              );
+            }
+
+            if (typeof filters?.obtained === 'boolean') {
+              pokemonsQuery = query(
+                pokemonsQuery,
+                where('obtained', '==', filters.obtained)
+              );
+            }
+
+            return collectionData(pokemonsQuery, { idField: 'uid' }).pipe(
+              map((pokemons: Pokemon[]) => {
+                return {
+                  id: regionDoc.id,
+                  uid: regionDoc.uid,
+                  group: regionDoc.group,
+                  pokemons,
+                };
+              })
+            );
+          });
+
+        if (regionalPokemonObservables.length === 0) {
+          return of([]);
         }
-        return pokemons;
-      })
+
+        return combineLatest(regionalPokemonObservables);
+      }),
+      catchError((error) =>
+        throwError(() => new Error(error.message || 'Error al buscar Pokémon.'))
+      )
     );
   }
 }

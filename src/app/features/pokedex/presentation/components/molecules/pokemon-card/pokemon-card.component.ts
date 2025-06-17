@@ -16,6 +16,7 @@ import { PokemonTypeComponent } from '../../atoms/pokemon-type/pokemon-type.comp
 })
 export class PokemonCardComponent {
   @Input() pokemon: Pokemon = createEmptyPokemon();
+  @Input() regionPokemon: string = '';
   fontColor = '#fff';
 
   private updatePokemonUseCase = inject(UpdatePokemonsUseCase);
@@ -29,7 +30,6 @@ export class PokemonCardComponent {
 
   async updatePokemon(
     event: MouseEvent,
-    id: string,
     property: 'available' | 'obtained',
     checked: boolean
   ) {
@@ -41,13 +41,16 @@ export class PokemonCardComponent {
     }
 
     const pokemonToUpdate = {
-      id,
       [property]: !checked,
       ...(property === 'available' && { obtained: false }),
     };
 
     try {
-      await this.updatePokemonUseCase.updatePokemon(pokemonToUpdate);
+      await this.updatePokemonUseCase.updatePokemon(
+        this.regionPokemon,
+        this.pokemon.id,
+        pokemonToUpdate
+      );
       this.notificationService.openSuccessSnackBar();
     } catch (error) {
       this.notificationService.openErrorSnackBar();

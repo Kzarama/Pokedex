@@ -1,5 +1,20 @@
-<ul class="pokemon-list">
-  @for (pokemon of pokemons; track pokemon.id) {
-  <app-pokemon-card [pokemon]="pokemon" />
-  }
-</ul>
+<div class="expansion-panel">
+  <mat-accordion class="example-headers-align" multi>
+    @for (pokemonsList of pokemonsRegion; track pokemonsList.id) {
+    <mat-expansion-panel expanded>
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{ pokemonsList.id }}</mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <ul class="pokemon-list">
+        @for (pokemon of pokemonsList.pokemons; track pokemon.id) {
+        <app-pokemon-card
+          [pokemon]="pokemon"
+          [regionPokemon]="pokemonsList.id"
+        />
+        }
+      </ul>
+    </mat-expansion-panel>
+    }
+  </mat-accordion>
+</div>

@@ -17,18 +17,14 @@
             text="Disponible:"
             [checked]="pokemon.available"
             color="white"
-            (action)="
-              updatePokemon($event, pokemon.id, 'available', pokemon.available)
-            "
+            (action)="updatePokemon($event, 'available', pokemon.available)"
           />
 
           <app-check
             text="Obtenido:"
             [checked]="pokemon.obtained"
             color="white"
-            (action)="
-              updatePokemon($event, pokemon.id, 'obtained', pokemon.obtained)
-            "
+            (action)="updatePokemon($event, 'obtained', pokemon.obtained)"
           />
         </div>
       </div>

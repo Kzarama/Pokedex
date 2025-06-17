@@ -1,6 +1,6 @@
 import { SearchPokemonsUseCase } from '@/features/pokedex/application/use-cases/search-pokemons.usecase';
 import { SEARCH_TITLE } from '@/features/pokedex/domain/constants/constants';
-import { Pokemon } from '@/features/pokedex/domain/entities/pokemon.model';
+import { RegionalPokedex } from '@/features/pokedex/domain/entities/pokemon.model';
 import { Component, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { select, Store } from '@ngrx/store';
@@ -20,7 +20,7 @@ import { PokedexState } from '../../state/pokedex/pokedex.state';
 })
 export class SearchComponent {
   isLoading = signal<boolean>(true);
-  pokemons = signal<Pokemon[]>([]);
+  pokemons = signal<RegionalPokedex[]>([]);
   searchTitle = SEARCH_TITLE;
 
   private searchPokemonsUseCase = inject(SearchPokemonsUseCase);
