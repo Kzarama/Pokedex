@@ -3,7 +3,9 @@
     @for (pokemonsList of pokemonsRegion; track pokemonsList.id) {
     <mat-expansion-panel expanded>
       <mat-expansion-panel-header>
-        <mat-panel-title>{{ pokemonsList.id }}</mat-panel-title>
+        <mat-panel-title>{{
+          pokemonsList.id.charAt(0).toUpperCase() + pokemonsList.id.slice(1)
+        }}</mat-panel-title>
       </mat-expansion-panel-header>
 
       <ul class="pokemon-list">

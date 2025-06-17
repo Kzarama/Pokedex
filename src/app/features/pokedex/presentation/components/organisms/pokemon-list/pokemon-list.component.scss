@@ -1,6 +1,17 @@
+@use "@angular/material" as mat;
+
 .expansion-panel {
   max-width: 1100px;
   margin: 20px auto;
+
+  @include mat.expansion-overrides(
+    (
+      container-background-color: #21212192,
+      header-text-color: white,
+      header-text-size: 35px,
+      header-indicator-color: white,
+    )
+  );
 
   .pokemon-list {
     margin: 20px auto;

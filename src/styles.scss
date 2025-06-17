@@ -40,13 +40,3 @@ body {
   --mdc-snackbar-container-color: #b00000 !important;
   --mdc-snackbar-supporting-text-color: white !important;
 }
-
-.expansion-panel {
-  @include mat.expansion-overrides(
-    (
-      container-background-color: #21212192,
-      header-text-color: white,
-      header-indicator-color: white,
-    )
-  );
-}

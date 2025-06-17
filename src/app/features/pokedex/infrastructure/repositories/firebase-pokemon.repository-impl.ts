@@ -91,14 +91,12 @@ export class FirestoreService implements PokemonRepository {
       this.firestore,
       'pokemons'
     ) as CollectionReference<Pokemon>;
-    const q = query(pokemonsGroupRef, where('uid', '==', id));
 
-    return collectionData(q, { idField: 'uid' }).pipe(
+    const q = query(pokemonsGroupRef, where('id', '==', id));
+
+    return collectionData(q, { idField: 'id' }).pipe(
       take(1),
       map((pokemonDocs: Pokemon[]) => {
-        if (pokemonDocs.length === 0) {
-          throw new Error(`Pokémon con UID '${id}' no encontrado.`);
-        }
         const foundPokemon = pokemonDocs[0];
 
         return {
