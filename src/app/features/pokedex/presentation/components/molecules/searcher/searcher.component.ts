@@ -43,12 +43,9 @@ export class SearcherComponent {
           return this.resetFilters();
         }
 
-        const formattedSearchTerm =
-          searchTerm.charAt(0).toUpperCase() + searchTerm.slice(1);
-
         this.store.dispatch(
           PokedexActions.applyPokedexFilters({
-            filters: { name: formattedSearchTerm },
+            filters: { name: searchTerm },
           })
         );
 

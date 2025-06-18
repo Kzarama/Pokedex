@@ -38,7 +38,7 @@ export class SearchComponent {
               this.pokemons.set(data);
               this.isLoading.set(false);
             }),
-            catchError((error) => {
+            catchError(() => {
               this.notificationService.openErrorSnackBar();
               this.isLoading.set(false);
               return of([]);

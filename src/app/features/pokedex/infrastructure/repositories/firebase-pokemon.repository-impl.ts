@@ -36,7 +36,7 @@ export class FirestoreService implements PokemonRepository {
       this.firestore,
       'Pokedex'
     ) as CollectionReference<RegionDocumentFirestore>;
-    const regionsQuery = query(regionsCollectionRef, orderBy('uid', 'asc'));
+    const regionsQuery = query(regionsCollectionRef, orderBy('id', 'asc'));
 
     return collectionData(regionsQuery, { idField: 'id' }).pipe(
       switchMap((regionDocs: RegionDocumentFirestore[]) => {
@@ -57,15 +57,11 @@ export class FirestoreService implements PokemonRepository {
             return collectionData(pokemonsQuery, { idField: 'uid' }).pipe(
               map((pokemonsInRegion: Pokemon[]) => ({
                 id: regionDoc.id,
-                uid: regionDoc.uid,
-                group: regionDoc.group,
                 pokemons: pokemonsInRegion,
               })),
               catchError(() => {
                 return of({
                   id: regionDoc.id,
-                  uid: regionDoc.uid,
-                  group: regionDoc.group,
                   pokemons: [],
                 } as RegionalPokedex);
               })
@@ -101,7 +97,6 @@ export class FirestoreService implements PokemonRepository {
 
         return {
           pokemon: foundPokemon,
-          regionName: foundPokemon.regionName,
         } as PokemonWithRegion;
       }),
       catchError((error) => {
@@ -132,7 +127,7 @@ export class FirestoreService implements PokemonRepository {
       await updateDoc(pokemonDocRef, updates);
     } catch (e: any) {
       throw new Error(
-        `Error al actualizar Pokémon UID '${id}' en la región '${regionId}': ${
+        `Error al actualizar Pokémon id '${id}' en la región '${regionId}': ${
           e.message || e
         }`
       );
@@ -187,8 +182,6 @@ export class FirestoreService implements PokemonRepository {
               map((pokemons: Pokemon[]) => {
                 return {
                   id: regionDoc.id,
-                  uid: regionDoc.uid,
-                  group: regionDoc.group,
                   pokemons,
                 };
               })

@@ -1,6 +1,7 @@
 <div class="expansion-panel">
   <mat-accordion class="example-headers-align" multi>
     @for (pokemonsList of pokemonsRegion; track pokemonsList.id) {
+    @if (pokemonsList.pokemons.length > 0) {
     <mat-expansion-panel expanded>
       <mat-expansion-panel-header>
         <mat-panel-title>{{
@@ -17,6 +18,7 @@
         }
       </ul>
     </mat-expansion-panel>
+    } 
     }
   </mat-accordion>
 </div>

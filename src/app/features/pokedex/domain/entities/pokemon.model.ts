@@ -1,7 +1,5 @@
 export interface RegionalPokedex {
   id: string;
-  uid: number;
-  group: string;
   pokemons: Pokemon[];
 }
 
@@ -21,13 +19,10 @@ export interface Pokemon {
 export interface PokemonWithRegion {
   pokemon: Pokemon;
   regionId: string;
-  regionName: string;
 }
 
 export interface RegionDocumentFirestore {
   id: string;
-  uid: number;
-  group: string;
 }
 
 export interface PokemonFilter {
