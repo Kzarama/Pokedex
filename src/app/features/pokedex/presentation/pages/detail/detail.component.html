@@ -35,7 +35,7 @@
 </div>
 
 <div class="sprites">
-  @for (sprite of pokemon().pokemon.sprites; track pokemon().pokemon.sprites) {
-  <img [src]="sprite" [alt]="pokemon().pokemon.name" />
+  @for (sprite of pokemon().pokemon.sprites; track sprite) {
+  <img [src]="sprite" [alt]="pokemon().pokemon.name" loading="lazy" />
   }
 </div>

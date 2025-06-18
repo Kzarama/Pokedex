@@ -47,7 +47,7 @@ export class DetailComponent implements OnInit {
 
     try {
       await this.updatePokemonUseCase.updatePokemon(
-        this.pokemon().regionId,
+        this.pokemon().pokemon.regionName.toLowerCase(),
         this.pokemon().pokemon.id,
         pokemonToUpdate
       );
