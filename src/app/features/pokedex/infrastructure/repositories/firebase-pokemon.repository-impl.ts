@@ -23,7 +23,6 @@ import {
 } from 'features/pokedex/domain/repositories/pokemon.repository';
 import { combineLatest, Observable, of, throwError } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
-import { ALL_REGION_POKEMONS } from '../../../../../../pokemonslist';
 
 @Injectable({
   providedIn: 'root',
@@ -36,7 +35,6 @@ export class FirestoreService implements PokemonRepository {
       this.firestore,
       'Pokedex'
     ) as CollectionReference<RegionDocumentFirestore>;
-    return of(ALL_REGION_POKEMONS);
     const regionsQuery = query(regionsCollectionRef, orderBy('id', 'asc'));
 
     return collectionData(regionsQuery, { idField: 'id' }).pipe(
@@ -88,8 +86,6 @@ export class FirestoreService implements PokemonRepository {
       this.firestore,
       'pokemons'
     ) as CollectionReference<Pokemon>;
-    return of(ALL_REGION_POKEMONS[0].pokemons[0]);
-
     const q = query(pokemonsGroupRef, where('id', '==', id));
 
     return collectionData(q, { idField: 'id' }).pipe(
