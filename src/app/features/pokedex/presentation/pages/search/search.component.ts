@@ -1,6 +1,6 @@
 import * as PokedexSelectors from '@/core/state/search/search.selectors';
 import { PokedexState } from '@/core/state/search/search.state';
-import { SearchPokemonsUseCase } from '@/features/pokedex/application/use-cases/search-pokemons.usecase';
+import { SearchPokemonsUseCase } from '@/features/pokedex/application/use-cases/pokemon/search-pokemons.usecase';
 import { SEARCH_TITLE } from '@/features/pokedex/domain/constants/constants';
 import { RegionalPokedex } from '@/features/pokedex/domain/entities/pokemon.model';
 import { LoadingComponent } from '@/shared/components/loading/loading.component';

@@ -1,0 +1,17 @@
+@if (hasSession){
+<div [class]="color ? '' : 'checks'">
+  <app-check
+    text="Disponible:"
+    [checked]="pokemon.available"
+    [color]="color ?? pokemon.color"
+    (action)="updatePokemon($event, 'available', pokemon.available)"
+  />
+
+  <app-check
+    text="Obtenido:"
+    [checked]="pokemon.obtained"
+    [color]="color ?? pokemon.color"
+    (action)="updatePokemon($event, 'obtained', pokemon.obtained)"
+  />
+</div>
+}

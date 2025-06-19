@@ -1,16 +1,15 @@
-import { UpdatePokemonsUseCase } from '@/features/pokedex/application/use-cases/update-pokemon.usecase';
+import { GetPokemonByIdUseCase } from '@/features/pokedex/application/use-cases/pokemon/get-pokemon-by-id.usecase';
+import { Pokemon } from '@/features/pokedex/domain/entities/pokemon.model';
 import { createEmptyPokemon } from '@/features/pokedex/domain/factories/pokemon.factory';
-import { CheckComponent } from '@/shared/components/check/check.component';
 import { Component, inject, Input, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { GetPokemonByIdUseCase } from 'features/pokedex/application/use-cases/get-pokemon-by-id.usecase';
-import { Pokemon } from 'features/pokedex/domain/entities/pokemon.model';
 import { PokemonTypeComponent } from '../../components/atoms/pokemon-type/pokemon-type.component';
+import { ChecksComponent } from '../../components/molecules/checks/checks.component';
 import { NotificationAdapterService } from '../../shared/notification.service';
 
 @Component({
   selector: 'app-detail',
-  imports: [PokemonTypeComponent, CheckComponent],
+  imports: [PokemonTypeComponent, ChecksComponent],
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.scss',
 })
@@ -20,7 +19,6 @@ export class DetailComponent implements OnInit {
   pokemon = signal<Pokemon>(createEmptyPokemon());
 
   private getPokemonByIdUseCase = inject(GetPokemonByIdUseCase);
-  private updatePokemonUseCase = inject(UpdatePokemonsUseCase);
   private notificationService = inject(NotificationAdapterService);
 
   ngOnInit(): void {
@@ -30,27 +28,5 @@ export class DetailComponent implements OnInit {
         this.notificationService.openErrorSnackBar();
       },
     });
-  }
-
-  async updatePokemon(property: 'available' | 'obtained', checked: boolean) {
-    if (property === 'obtained' && !this.pokemon().available) {
-      return;
-    }
-
-    const pokemonToUpdate = {
-      [property]: !checked,
-      ...(property === 'available' && { obtained: false }),
-    };
-
-    try {
-      await this.updatePokemonUseCase.updatePokemon(
-        this.pokemon().regionName.toLowerCase(),
-        this.pokemon().id,
-        pokemonToUpdate
-      );
-      this.notificationService.openSuccessSnackBar();
-    } catch (error) {
-      this.notificationService.openErrorSnackBar();
-    }
   }
 }

@@ -46,25 +46,6 @@
           display: flex;
           gap: 10px;
         }
-
-        .checks {
-          width: fit-content;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          gap: 5px;
-
-          .check {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            gap: 10px;
-
-            input {
-              margin: 0;
-            }
-          }
-        }
       }
 
       .image {

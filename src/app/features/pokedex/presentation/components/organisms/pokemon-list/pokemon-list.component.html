@@ -14,10 +14,7 @@
 
       <ul class="pokemon-list">
         @for (pokemon of pokemonsList.pokemons; track pokemon.id) {
-        <app-pokemon-card
-          [pokemon]="pokemon"
-          [regionPokemon]="pokemonsList.id"
-        />
+        <app-pokemon-card [pokemon]="pokemon" />
         }
       </ul>
     </mat-expansion-panel>

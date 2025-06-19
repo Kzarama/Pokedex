@@ -1,6 +1,6 @@
+import { PokemonFilter } from '@/features/pokedex/domain/entities/pokemon.model';
+import { FirestoreService } from '@/features/pokedex/infrastructure/repositories/firebase-pokemon.repository-impl';
 import { inject, Injectable } from '@angular/core';
-import { FirestoreService } from 'features/pokedex/infrastructure/repositories/firebase-pokemon.repository-impl';
-import { PokemonFilter } from '../../domain/repositories/pokemon.repository';
 
 @Injectable({
   providedIn: 'root',

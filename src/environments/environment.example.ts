@@ -7,4 +7,5 @@ export const environment = {
     authDomain: '',
     messagingSenderId: '',
   },
+  session: { appSecret: '' },
 };

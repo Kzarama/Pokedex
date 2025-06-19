@@ -1,0 +1,10 @@
+@use "variables" as vars;
+
+.checks {
+  background: vars.$card-background;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

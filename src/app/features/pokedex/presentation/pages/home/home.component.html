@@ -1,6 +1,8 @@
 <div class="title">
   <h1>{{ homeTitle }}</h1>
-  <img src="pokeball.webp" alt="pokeball" />
+  <div (click)="handleSession()">
+    <img src="pokeball.webp" alt="pokeball" />
+  </div>
 </div>
 
 @if (isLoading()) {

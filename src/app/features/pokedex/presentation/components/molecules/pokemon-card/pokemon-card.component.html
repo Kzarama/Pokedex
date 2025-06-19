@@ -12,21 +12,7 @@
 
         <app-pokemon-type [types]="pokemon.types" />
 
-        <div class="checks">
-          <app-check
-            text="Disponible:"
-            [checked]="pokemon.available"
-            color="white"
-            (action)="updatePokemon($event, 'available', pokemon.available)"
-          />
-
-          <app-check
-            text="Obtenido:"
-            [checked]="pokemon.obtained"
-            color="white"
-            (action)="updatePokemon($event, 'obtained', pokemon.obtained)"
-          />
-        </div>
+        <app-checks [pokemon]="pokemon" color="white" />
       </div>
 
       <img

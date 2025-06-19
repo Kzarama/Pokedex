@@ -1,5 +1,5 @@
+import { FirestoreService } from '@/features/pokedex/infrastructure/repositories/firebase-pokemon.repository-impl';
 import { inject, Injectable } from '@angular/core';
-import { FirestoreService } from 'features/pokedex/infrastructure/repositories/firebase-pokemon.repository-impl';
 
 @Injectable({
   providedIn: 'root',
