@@ -1,3 +1,6 @@
+import * as PokedexActions from '@/core/state/search/search.actions';
+import * as PokedexSelectors from '@/core/state/search/search.selectors';
+import { PokedexState } from '@/core/state/search/search.state';
 import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
@@ -5,9 +8,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
-import * as PokedexActions from '../../../state/pokedex/pokedex.actions';
-import * as PokedexSelectors from '../../../state/pokedex/pokedex.selectors';
-import { PokedexState } from '../../../state/pokedex/pokedex.state';
 
 @Component({
   selector: 'app-searcher',

@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { PokedexState } from './pokedex.state';
-import { pokedexFeatureKey } from './pokedex.reducer';
+import { PokedexState } from './search.state';
+import { pokedexFeatureKey } from './search.reducer';
 
 export const selectPokedexState =
   createFeatureSelector<PokedexState>(pokedexFeatureKey);

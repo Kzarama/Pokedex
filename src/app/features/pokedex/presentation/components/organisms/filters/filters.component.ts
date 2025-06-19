@@ -1,13 +1,13 @@
+import * as PokedexActions from '@/core/state/search/search.actions';
+import * as PokedexSelectors from '@/core/state/search/search.selectors';
+import { PokedexState } from '@/core/state/search/search.state';
 import { PokemonFilter } from '@/features/pokedex/domain/repositories/pokemon.repository';
+import { CheckComponent } from '@/shared/components/check/check.component';
 import { Component, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
-import * as PokedexActions from '../../../state/pokedex/pokedex.actions';
-import * as PokedexSelectors from '../../../state/pokedex/pokedex.selectors';
-import { PokedexState } from '../../../state/pokedex/pokedex.state';
 import { ButtonComponent } from '../../atoms/button/button.component';
-import { CheckComponent } from '../../atoms/check/check.component';
 
 @Component({
   selector: 'app-filters',

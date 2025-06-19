@@ -1,16 +1,16 @@
+import * as PokedexSelectors from '@/core/state/search/search.selectors';
+import { PokedexState } from '@/core/state/search/search.state';
 import { SearchPokemonsUseCase } from '@/features/pokedex/application/use-cases/search-pokemons.usecase';
 import { SEARCH_TITLE } from '@/features/pokedex/domain/constants/constants';
 import { RegionalPokedex } from '@/features/pokedex/domain/entities/pokemon.model';
+import { LoadingComponent } from '@/shared/components/loading/loading.component';
 import { Component, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { select, Store } from '@ngrx/store';
 import { catchError, of, switchMap, tap } from 'rxjs';
-import { LoadingComponent } from '../../components/atoms/loading/loading.component';
 import { FiltersComponent } from '../../components/organisms/filters/filters.component';
 import { PokemonListComponent } from '../../components/organisms/pokemon-list/pokemon-list.component';
 import { NotificationAdapterService } from '../../shared/notification.service';
-import * as PokedexSelectors from '../../state/pokedex/pokedex.selectors';
-import { PokedexState } from '../../state/pokedex/pokedex.state';
 
 @Component({
   selector: 'app-search',

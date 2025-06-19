@@ -9,7 +9,7 @@ import { routes } from './app.routes';
 import {
   pokedexFeatureKey,
   pokedexReducer,
-} from './features/pokedex/presentation/state/pokedex/pokedex.reducer';
+} from './core/state/search/search.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [

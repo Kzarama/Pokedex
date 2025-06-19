@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { initialPokedexState } from './pokedex.state';
-import * as PokedexActions from './pokedex.actions';
+import { initialPokedexState } from './search.state';
+import * as PokedexActions from './search.actions';
 
 export const pokedexFeatureKey = 'pokedex';
 

@@ -1,4 +1,4 @@
-@import "../../../styles/variables.sass";
+@use "variables" as vars;
 
 .container {
   color: white;
@@ -6,7 +6,7 @@
   min-height: 100vh;
   padding: 20px;
   padding-top: 80px;
-  background: $container-background;
+  background: vars.$container-background;
 
   .bg-pokeball {
     filter: opacity(0.1);

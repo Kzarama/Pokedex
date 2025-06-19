@@ -1,10 +1,10 @@
 import { UpdatePokemonsUseCase } from '@/features/pokedex/application/use-cases/update-pokemon.usecase';
 import { createEmptyPokemon } from '@/features/pokedex/domain/factories/pokemon.factory';
+import { CheckComponent } from '@/shared/components/check/check.component';
 import { Component, inject, Input, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GetPokemonByIdUseCase } from 'features/pokedex/application/use-cases/get-pokemon-by-id.usecase';
 import { Pokemon } from 'features/pokedex/domain/entities/pokemon.model';
-import { CheckComponent } from '../../components/atoms/check/check.component';
 import { PokemonTypeComponent } from '../../components/atoms/pokemon-type/pokemon-type.component';
 import { NotificationAdapterService } from '../../shared/notification.service';
 

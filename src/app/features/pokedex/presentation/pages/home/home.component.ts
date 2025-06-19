@@ -1,9 +1,9 @@
 import { GetPokemonsUseCase } from '@/features/pokedex/application/use-cases/get-pokemons.usecase';
+import { LoadingComponent } from '@/shared/components/loading/loading.component';
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { HOME_TITLE } from 'features/pokedex/domain/constants/constants';
 import { RegionalPokedex } from 'features/pokedex/domain/entities/pokemon.model';
-import { LoadingComponent } from '../../components/atoms/loading/loading.component';
 import { PokemonListComponent } from '../../components/organisms/pokemon-list/pokemon-list.component';
 import { NotificationAdapterService } from '../../shared/notification.service';
 

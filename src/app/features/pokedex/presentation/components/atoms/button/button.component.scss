@@ -1,4 +1,4 @@
-@import "../../../styles/variables.sass";
+@use "variables" as vars;
 
 button {
   position: relative;
@@ -22,7 +22,7 @@ button {
   }
 
   &:hover {
-    color: $primary-red;
+    color: vars.$primary-red;
 
     &::after {
       width: 100%;
@@ -30,7 +30,7 @@ button {
   }
 
   &.active-route {
-    color: $primary-red;
+    color: vars.$primary-red;
 
     &::after {
       transition: none;
