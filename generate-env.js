@@ -16,6 +16,7 @@ export const environment = {
     authDomain: 'pokedex-app-kz.firebaseapp.com',
     messagingSenderId: '1008231510677',
   },
+  session: { appSecret: 'pogo' },
 };
 `;
 
