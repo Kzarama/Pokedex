@@ -20,6 +20,8 @@ export class FiltersComponent {
   filterForm: PokemonFilter = {
     available: undefined,
     obtained: undefined,
+    megaEvolve: false,
+    gMax: false,
   };
 
   private store = inject(Store<PokedexState>);
@@ -41,12 +43,14 @@ export class FiltersComponent {
             typeof filters.obtained === 'boolean'
               ? filters.obtained
               : undefined,
+          megaEvolve: filters.megaEvolve ?? undefined,
+          gMax: filters.gMax ?? undefined,
         };
       });
   }
 
   handleTristateCheckboxChange(
-    property: 'available' | 'obtained',
+    property: 'available' | 'obtained' | 'megaEvolve' | 'gMax',
     currentValue: boolean | undefined
   ): void {
     if (currentValue === undefined) {
@@ -69,6 +73,12 @@ export class FiltersComponent {
     }
     if (typeof this.filterForm.obtained === 'boolean') {
       filtersToDispatch.obtained = this.filterForm.obtained;
+    }
+    if (this.filterForm.megaEvolve) {
+      filtersToDispatch.megaEvolve = this.filterForm.megaEvolve;
+    }
+    if (this.filterForm.gMax) {
+      filtersToDispatch.gMax = this.filterForm.gMax;
     }
 
     this.store.dispatch(

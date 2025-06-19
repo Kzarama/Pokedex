@@ -14,7 +14,6 @@ import {
 } from '@angular/fire/firestore';
 import {
   Pokemon,
-  PokemonWithRegion,
   RegionalPokedex,
   RegionDocumentFirestore,
 } from 'features/pokedex/domain/entities/pokemon.model';
@@ -23,7 +22,8 @@ import {
   PokemonRepository,
 } from 'features/pokedex/domain/repositories/pokemon.repository';
 import { combineLatest, Observable, of, throwError } from 'rxjs';
-import { catchError, map, switchMap, take } from 'rxjs/operators';
+import { catchError, map, switchMap } from 'rxjs/operators';
+import { ALL_REGION_POKEMONS } from '../../../../../../pokemonslist';
 
 @Injectable({
   providedIn: 'root',
@@ -36,6 +36,7 @@ export class FirestoreService implements PokemonRepository {
       this.firestore,
       'Pokedex'
     ) as CollectionReference<RegionDocumentFirestore>;
+    return of(ALL_REGION_POKEMONS);
     const regionsQuery = query(regionsCollectionRef, orderBy('id', 'asc'));
 
     return collectionData(regionsQuery, { idField: 'id' }).pipe(
@@ -82,21 +83,18 @@ export class FirestoreService implements PokemonRepository {
     );
   }
 
-  getPokemonById(id: string): Observable<PokemonWithRegion> {
+  getPokemonById(id: string): Observable<Pokemon> {
     const pokemonsGroupRef = collectionGroup(
       this.firestore,
       'pokemons'
     ) as CollectionReference<Pokemon>;
+    return of(ALL_REGION_POKEMONS[0].pokemons[0]);
 
     const q = query(pokemonsGroupRef, where('id', '==', id));
 
     return collectionData(q, { idField: 'id' }).pipe(
       map((pokemonDocs: Pokemon[]) => {
-        const foundPokemon = pokemonDocs[0];
-
-        return {
-          pokemon: foundPokemon,
-        } as PokemonWithRegion;
+        return pokemonDocs[0];
       }),
       catchError((error) => {
         return throwError(
@@ -133,15 +131,27 @@ export class FirestoreService implements PokemonRepository {
     }
   }
 
-  searchPokemon(filters?: PokemonFilter): Observable<RegionalPokedex[]> {
+  getRegions(): Observable<RegionDocumentFirestore[]> {
     const regionsCollectionRef = collection(
       this.firestore,
       'Pokedex'
     ) as CollectionReference<RegionDocumentFirestore>;
 
     const regionsQuery = query(regionsCollectionRef, orderBy('uid', 'asc'));
+    return collectionData(regionsQuery, { idField: 'id' });
+  }
 
-    return collectionData(regionsQuery, { idField: 'id' }).pipe(
+  searchPokemon(filters?: PokemonFilter): Observable<RegionalPokedex[]> {
+    const ids = [];
+
+    if (filters?.megaEvolve) ids.push('megaEvoluciones');
+    if (filters?.gMax) ids.push('gMax');
+
+    const regions = ids.length
+      ? of(ids.map((id) => ({ id })))
+      : this.getRegions();
+
+    return regions.pipe(
       switchMap((regionDocs: RegionDocumentFirestore[]) => {
         const regionalPokemonObservables: Observable<RegionalPokedex>[] =
           regionDocs.map((regionDoc) => {

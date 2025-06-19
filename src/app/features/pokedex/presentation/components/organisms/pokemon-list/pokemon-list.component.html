@@ -1,12 +1,15 @@
 <div class="expansion-panel">
   <mat-accordion class="example-headers-align" multi>
-    @for (pokemonsList of pokemonsRegion; track pokemonsList.id) {
-    @if (pokemonsList.pokemons.length > 0) {
+    @for (pokemonsList of pokemonsRegion; track pokemonsList.id) { @if
+    (pokemonsList.pokemons.length > 0) {
     <mat-expansion-panel expanded>
       <mat-expansion-panel-header>
-        <mat-panel-title>{{
-          pokemonsList.id.charAt(0).toUpperCase() + pokemonsList.id.slice(1)
-        }}</mat-panel-title>
+        <mat-panel-title
+          >{{
+            pokemonsList.id.charAt(0).toUpperCase() + pokemonsList.id.slice(1)
+          }}
+          - {{ pokemonsList.pokemons.length }}</mat-panel-title
+        >
       </mat-expansion-panel-header>
 
       <ul class="pokemon-list">
@@ -18,7 +21,6 @@
         }
       </ul>
     </mat-expansion-panel>
-    } 
-    }
+    } }
   </mat-accordion>
 </div>

@@ -17,10 +17,7 @@ import { NotificationAdapterService } from '../../shared/notification.service';
 export class DetailComponent implements OnInit {
   @Input() id!: string;
   route: ActivatedRoute = inject(ActivatedRoute);
-  pokemon = signal<{ pokemon: Pokemon; regionId: string }>({
-    pokemon: createEmptyPokemon(),
-    regionId: '',
-  });
+  pokemon = signal<Pokemon>(createEmptyPokemon());
 
   private getPokemonByIdUseCase = inject(GetPokemonByIdUseCase);
   private updatePokemonUseCase = inject(UpdatePokemonsUseCase);
@@ -36,7 +33,7 @@ export class DetailComponent implements OnInit {
   }
 
   async updatePokemon(property: 'available' | 'obtained', checked: boolean) {
-    if (property === 'obtained' && !this.pokemon().pokemon.available) {
+    if (property === 'obtained' && !this.pokemon().available) {
       return;
     }
 
@@ -47,8 +44,8 @@ export class DetailComponent implements OnInit {
 
     try {
       await this.updatePokemonUseCase.updatePokemon(
-        this.pokemon().pokemon.regionName.toLowerCase(),
-        this.pokemon().pokemon.id,
+        this.pokemon().regionName.toLowerCase(),
+        this.pokemon().id,
         pokemonToUpdate
       );
       this.notificationService.openSuccessSnackBar();

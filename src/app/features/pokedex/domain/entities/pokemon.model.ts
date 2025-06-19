@@ -16,11 +16,6 @@ export interface Pokemon {
   obtained: boolean;
 }
 
-export interface PokemonWithRegion {
-  pokemon: Pokemon;
-  regionId: string;
-}
-
 export interface RegionDocumentFirestore {
   id: string;
 }

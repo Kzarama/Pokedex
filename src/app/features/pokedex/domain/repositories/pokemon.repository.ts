@@ -1,10 +1,10 @@
 import { Observable } from 'rxjs';
-import { PokemonWithRegion, RegionalPokedex } from '../entities/pokemon.model';
+import { Pokemon, RegionalPokedex } from '../entities/pokemon.model';
 
 export interface PokemonRepository {
   getPokemons(): Observable<RegionalPokedex[]>;
 
-  getPokemonById(pokemonUidToFind: string): Observable<PokemonWithRegion>;
+  getPokemonById(pokemonUidToFind: string): Observable<Pokemon>;
 
   updatePokemon(
     regionId: string,
@@ -16,7 +16,9 @@ export interface PokemonRepository {
 }
 
 export interface PokemonFilter {
+  name?: string;
   available?: boolean;
   obtained?: boolean;
-  name?: string;
+  megaEvolve?: boolean;
+  gMax?: boolean;
 }

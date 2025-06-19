@@ -17,15 +17,21 @@
   }
 
   .filter-container {
-    background: $card-background;
-    padding: 20px;
-    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 
-    .filter-options {
-      padding-left: 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
+    .filter-section {
+      background: $card-background;
+      padding: 20px;
+      border-radius: 10px;
+
+      .filter-options {
+        padding-left: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
     }
   }
 }

@@ -15,24 +15,48 @@
   </div>
 
   <div class="filter-container">
-    <h3 class="filter-title">Propiedades</h3>
+    <div class="filter-section">
+      <h3 class="filter-title">Propiedades</h3>
 
-    <div class="filter-options">
-      <app-check
-        [checked]="filterForm.available === true"
-        [indeterminate]="filterForm.available === undefined"
-        text="Disponible"
-        (action)="
-          handleTristateCheckboxChange('available', filterForm.available)
-        "
-      />
+      <div class="filter-options">
+        <app-check
+          [checked]="filterForm.available === true"
+          [indeterminate]="filterForm.available === undefined"
+          text="Disponible"
+          (action)="
+            handleTristateCheckboxChange('available', filterForm.available)
+          "
+        />
 
-      <app-check
-        [checked]="filterForm.obtained === true"
-        [indeterminate]="filterForm.obtained === undefined"
-        text="Obtenido"
-        (action)="handleTristateCheckboxChange('obtained', filterForm.obtained)"
-      />
+        <app-check
+          [checked]="filterForm.obtained === true"
+          [indeterminate]="filterForm.obtained === undefined"
+          text="Obtenido"
+          (action)="
+            handleTristateCheckboxChange('obtained', filterForm.obtained)
+          "
+        />
+      </div>
+    </div>
+
+    <div class="filter-section">
+      <h3 class="filter-title">Forma</h3>
+
+      <div class="filter-options">
+        <app-button
+          text="Mega Evolucion"
+          (click)="
+            handleTristateCheckboxChange('megaEvolve', filterForm.megaEvolve)
+          "
+          [active]="filterForm.megaEvolve ?? false"
+        />
+
+        <app-button
+          text="Gigamax"
+          (click)="handleTristateCheckboxChange('gMax', filterForm.gMax)"
+          [active]="filterForm.gMax ?? false"
+        />
+      </div>
     </div>
   </div>
 </div>
