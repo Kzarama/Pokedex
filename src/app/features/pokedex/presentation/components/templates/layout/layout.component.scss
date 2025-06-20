@@ -1,6 +1,6 @@
 @use "variables" as vars;
 
-.container {
+.layout-container {
   color: white;
   height: 100%;
   min-height: 100vh;
@@ -8,7 +8,7 @@
   padding-top: 80px;
   background: vars.$container-background;
 
-  .bg-pokeball {
+  .layout-bg-pokeball {
     filter: opacity(0.1);
     width: 900px;
     position: fixed;
@@ -18,7 +18,7 @@
     z-index: 0;
   }
 
-  .content {
+  .layout-content {
     position: relative;
     z-index: 1;
   }

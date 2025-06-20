@@ -1,4 +1,4 @@
-<div class="types">
+<div class="pokemon-type-container">
   @for (type of typesData; track type.type) {
   <span
     [style]="{
@@ -6,7 +6,7 @@
       color: type.color,
       'font-size': textSize
     }"
-    class="type"
+    class="pokemon-type-type"
   >
     {{ type.type }}
   </span>

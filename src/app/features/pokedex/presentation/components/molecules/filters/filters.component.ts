@@ -6,6 +6,7 @@ import { CheckComponent } from '@/shared/components/check/check.component';
 import { Component, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { select, Store } from '@ngrx/store';
 import { ButtonComponent } from '../../atoms/button/button.component';
 
@@ -25,6 +26,7 @@ export class FiltersComponent {
   };
 
   private store = inject(Store<PokedexState>);
+  private dialog = inject(MatDialog);
 
   constructor() {
     this.store
@@ -63,6 +65,8 @@ export class FiltersComponent {
   }
 
   applyFilters(): void {
+    this.dialog.closeAll();
+
     const filtersToDispatch: PokemonFilter = {};
 
     if (this.filterForm.name) {
@@ -87,6 +91,7 @@ export class FiltersComponent {
   }
 
   resetFilters(): void {
+    this.dialog.closeAll();
     this.filterForm = {};
     this.store.dispatch(PokedexActions.resetPokedexFilters());
   }

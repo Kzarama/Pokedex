@@ -1,26 +1,25 @@
-<li class="item">
-  <a [routerLink]="['/details/' + pokemon.id]">
-    <div
-      [style]="{ 'background-color': pokemon.color, color: fontColor }"
-      class="container"
-    >
-      <div class="info">
-        <div class="title">
-          <span class="id">#{{ pokemon.id }}</span>
-          <span>{{ pokemon.name }}</span>
-        </div>
-
-        <app-pokemon-type [types]="pokemon.types" />
-
-        <app-checks [pokemon]="pokemon" color="white" />
+<li class="pokemon-card-container">
+  <a
+    [routerLink]="['/details/' + pokemon.id]"
+    [style]="{ 'background-color': pokemon.color, color: fontColor }"
+    class="pokemon-card-link"
+  >
+    <div class="pokemon-card-info">
+      <div class="pokemon-card-title">
+        <span class="pokemon-card-id">#{{ pokemon.id }}</span>
+        <span>{{ pokemon.name }}</span>
       </div>
 
-      <img
-        class="image"
-        [style]="{ 'view-transition-name': 'pokemon-image-' + pokemon.id }"
-        [src]="pokemon.avatar"
-        [alt]="pokemon.name"
-      />
+      <app-pokemon-type [types]="pokemon.types" />
+
+      <app-checks [pokemon]="pokemon" color="white" />
     </div>
+
+    <img
+      class="pokemon-card-image"
+      [style]="{ 'view-transition-name': 'pokemon-image-' + pokemon.id }"
+      [src]="pokemon.avatar"
+      [alt]="pokemon.name"
+    />
   </a>
 </li>

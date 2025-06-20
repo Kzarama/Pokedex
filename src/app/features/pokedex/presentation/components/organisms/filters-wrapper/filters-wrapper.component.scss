@@ -1,0 +1,24 @@
+@use "variables" as vars;
+@use "mixins";
+
+.desktop-filters {
+  display: none;
+
+  @include mixins.desktop() {
+    display: block;
+  }
+}
+
+.openDialog-button {
+  background: vars.$card-background;
+  padding: 10px 20px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  border-radius: 10px;
+  z-index: 3;
+
+  @include mixins.desktop() {
+    display: none;
+  }
+}

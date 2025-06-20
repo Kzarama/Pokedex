@@ -1,32 +1,36 @@
 @use "variables" as vars;
+@use "mixins";
 
-.filters {
+.filters-container {
   position: fixed;
   flex-grow: 1;
-  width: 15%;
 
-  .filter-buttons {
+  @include mixins.desktop() {
+    width: 15%;
+  }
+
+  .filters-buttons {
     margin-bottom: 20px;
     display: flex;
     flex-direction: column;
     gap: 20px;
   }
 
-  .filter-title {
-    margin: 0 0 10px 0;
-  }
-
-  .filter-container {
+  .filters-section {
     display: flex;
     flex-direction: column;
     gap: 15px;
 
-    .filter-section {
+    .filters-filter-container {
       background: vars.$card-background;
       padding: 20px;
       border-radius: 10px;
 
-      .filter-options {
+      .filters-filter-title {
+        margin: 0 0 10px 0;
+      }
+
+      .filters-filter-options {
         padding-left: 10px;
         display: flex;
         flex-direction: column;

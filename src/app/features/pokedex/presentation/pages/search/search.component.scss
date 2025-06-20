@@ -1,4 +1,6 @@
-.title {
+@use "mixins";
+
+.search-title {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,23 +18,26 @@
   }
 }
 
-.container {
+.search-container {
   width: 100%;
   padding: 0 20px;
-  display: flex;
-  gap: 10px;
 
-  .filters-component {
-    flex: 1;
-    max-width: 17%;
+  @include mixins.desktop() {
+    display: flex;
+    gap: 10px;
+
+    .search-filters {
+      flex: 1;
+      max-width: 17%;
+    }
   }
 
-  .empty-message {
+  .search-empty-message {
     margin: 100px auto;
     font-size: 30px;
   }
 
-  .pokemon-list {
+  .search-pokemon-list {
     width: 80%;
   }
 }

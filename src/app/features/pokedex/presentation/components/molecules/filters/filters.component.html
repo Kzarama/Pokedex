@@ -1,7 +1,7 @@
-<div class="filters">
+<div class="filters-container">
   <h2>Filtros:</h2>
 
-  <div class="filter-buttons">
+  <div class="filters-buttons">
     <app-button
       text="Aplicar filtros"
       (click)="applyFilters()"
@@ -14,11 +14,11 @@
     />
   </div>
 
-  <div class="filter-container">
-    <div class="filter-section">
-      <h3 class="filter-title">Propiedades</h3>
+  <div class="filters-section">
+    <div class="filters-filter-container">
+      <h3 class="filters-filter-title">Propiedades</h3>
 
-      <div class="filter-options">
+      <div class="filters-filter-options">
         <app-check
           [checked]="filterForm.available === true"
           [indeterminate]="filterForm.available === undefined"
@@ -39,10 +39,10 @@
       </div>
     </div>
 
-    <div class="filter-section">
-      <h3 class="filter-title">Forma</h3>
+    <div class="filters-filter-container">
+      <h3 class="filters-filter-title">Forma</h3>
 
-      <div class="filter-options" style="gap: 20px">
+      <div class="filters-filter-options" style="gap: 20px">
         <app-button
           text="Mega Evolucion"
           (click)="

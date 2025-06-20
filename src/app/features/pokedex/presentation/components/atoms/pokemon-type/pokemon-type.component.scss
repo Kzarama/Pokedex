@@ -1,11 +1,21 @@
-.types {
-  display: flex;
-  gap: 10px;
+@use "mixins";
 
-  .type {
-    padding: 5px 10px;
+.pokemon-type-container {
+  display: flex;
+  gap: 5px;
+
+  @include mixins.desktop() {
+    gap: 10px;
+  }
+
+  .pokemon-type-type {
+    padding: 0 4px;
     border: 1px solid black;
     border-radius: 10px;
     box-shadow: 5px 5px 6px -5px black;
+
+    @include mixins.desktop() {
+      padding: 5px 10px;
+    }
   }
 }

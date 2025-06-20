@@ -1,59 +1,79 @@
-.item {
+@use "mixins";
+
+.pokemon-card-container {
+  margin: 25px 20px 25px 10px;
   position: relative;
   list-style: none;
   transition: all 0.5s cubic-bezier(0.18, 0.89, 0.1, 1.58);
   z-index: 1;
+  display: flex;
 
-  &:hover {
-    transform: scale(1.1);
-    z-index: 2;
+  @include mixins.desktop() {
+    margin: 0;
+
+    &:hover {
+      transform: scale(1.1);
+      z-index: 2;
+    }
   }
 
-  a {
+  .pokemon-card-link {
     text-decoration: none;
+    padding: 10px;
+    width: 100%;
+    height: 150px;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 5px 5px 6px -5px black;
+    position: relative;
 
-    .container {
-      padding: 10px;
+    @include mixins.desktop() {
       width: 300px;
       height: 180px;
-      border: 1px solid black;
-      border-radius: 10px;
-      box-shadow: 5px 5px 6px -5px black;
       display: flex;
       gap: 5px;
-      position: relative;
+    }
 
-      .info {
+    .pokemon-card-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+
+      @include mixins.desktop() {
+        gap: 15px;
+      }
+      .pokemon-card-title {
+        font-weight: bolder;
+        text-transform: capitalize;
+        font-size: 20px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        gap: 15px;
 
-        .title {
-          font-weight: bolder;
-          text-transform: capitalize;
+        @include mixins.desktop() {
           font-size: 25px;
-          display: flex;
-          flex-direction: column;
+        }
 
-          .id {
+        .pokemon-card-id {
+          font-size: 15px;
+
+          @include mixins.desktop() {
             font-size: 18px;
           }
         }
-
-        .types {
-          text-transform: capitalize;
-          display: flex;
-          gap: 10px;
-        }
       }
+    }
 
-      .image {
+    .pokemon-card-image {
+      width: 150px;
+      position: absolute;
+      top: 0px;
+      right: -50px;
+      filter: drop-shadow(0 0 8px #0000009b);
+
+      @include mixins.desktop() {
         width: 200px;
-        position: absolute;
         top: -20px;
-        right: -50px;
-        filter: drop-shadow(0 0 8px #0000009b);
       }
     }
   }

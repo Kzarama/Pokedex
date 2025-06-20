@@ -1,27 +1,29 @@
-<h1 [style]="{ color: pokemon().color }">
-  #{{ pokemon().id }} {{ pokemon().name }}
-</h1>
+<div class="detail-container">
+  <h1 class="detail-title" [style]="{ color: pokemon().color }">
+    #{{ pokemon().id }} {{ pokemon().name }}
+  </h1>
 
-<div class="pokemon">
-  <img
-    class="avatar"
-    [style]="{ 'view-transition-name': 'pokemon-image-' + id }"
-    [src]="pokemon().avatar"
-    [alt]="pokemon().name"
-  />
+  <div class="detail-pokemon">
+    <img
+      class="detail-avatar"
+      [style]="{ 'view-transition-name': 'pokemon-image-' + id }"
+      [src]="pokemon().avatar"
+      [alt]="pokemon().name"
+    />
 
-  <div class="info">
-    <app-checks [pokemon]="pokemon()" />
+    <div class="detail-info">
+      <app-checks [pokemon]="pokemon()" />
 
-    <div class="types">
-      <span>Tipos:</span>
-      <app-pokemon-type [types]="pokemon().types" textSize="20px" />
+      <div class="detail-types">
+        <span>Tipos:</span>
+        <app-pokemon-type [types]="pokemon().types" textSize="20px" />
+      </div>
     </div>
   </div>
-</div>
 
-<div class="sprites">
-  @for (sprite of pokemon().sprites; track sprite) {
-  <img [src]="sprite" [alt]="pokemon().name" loading="lazy" />
-  }
+  <div class="detail-sprites">
+    @for (sprite of pokemon().sprites; track sprite) {
+    <img [src]="sprite" [alt]="pokemon().name" loading="lazy" />
+    }
+  </div>
 </div>
