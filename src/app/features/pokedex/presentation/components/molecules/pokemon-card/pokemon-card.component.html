@@ -6,7 +6,7 @@
   >
     <div class="pokemon-card-info">
       <div class="pokemon-card-title">
-        <span class="pokemon-card-id">#{{ pokemon.id }}</span>
+        <span class="pokemon-card-id">#{{ pokemon.uid }}</span>
         <span>{{ pokemon.name }}</span>
       </div>
 
@@ -17,7 +17,6 @@
 
     <img
       class="pokemon-card-image"
-      [style]="{ 'view-transition-name': 'pokemon-image-' + pokemon.id }"
       [src]="pokemon.avatar"
       [alt]="pokemon.name"
     />

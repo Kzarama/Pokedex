@@ -1,12 +1,14 @@
+@if (loading) {
+<app-loading />
+}@else{
 <div class="detail-container">
   <h1 class="detail-title" [style]="{ color: pokemon().color }">
-    #{{ pokemon().id }} {{ pokemon().name }}
+    #{{ pokemon().uid }} {{ pokemon().name }}
   </h1>
 
   <div class="detail-pokemon">
     <img
       class="detail-avatar"
-      [style]="{ 'view-transition-name': 'pokemon-image-' + id }"
       [src]="pokemon().avatar"
       [alt]="pokemon().name"
     />
@@ -22,8 +24,36 @@
   </div>
 
   <div class="detail-sprites">
-    @for (sprite of pokemon().sprites; track sprite) {
-    <img [src]="sprite" [alt]="pokemon().name" loading="lazy" />
-    }
+    <h2 class="detail-section-title">Imagenes:</h2>
+    <div class="detail-sprites-content">
+      @for (sprite of pokemon().sprites; track sprite) {
+      <img [src]="sprite" [alt]="pokemon().name" loading="lazy" />
+      }
+    </div>
   </div>
+
+  @if ((pokemon().evolutions ?? []).length > 0) {
+  <div class="detail-card-container">
+    <h2 class="detail-section-title">Evoluciones:</h2>
+    <div class="detail-card-content">
+      @for (evolution of pokemon().evolutions ?? []; track evolution) {
+      <app-evolution-card [pokemon]="evolution" />
+      }
+    </div>
+  </div>
+  }
+
+  <!--  -->
+
+  @if ((pokemon().forms ?? []).length > 0) {
+  <div class="detail-card-container">
+    <h2 class="detail-section-title">Formas:</h2>
+    <div class="detail-card-content">
+      @for (form of pokemon().forms ?? []; track form) {
+      <app-evolution-card [pokemon]="form" />
+      }
+    </div>
+  </div>
+  }
 </div>
+}

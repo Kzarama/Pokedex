@@ -3,8 +3,9 @@
 
 .detail-container {
   display: flex;
+  align-items: center;
   flex-direction: column;
-  gap: 10px;
+  gap: 30px;
 
   .detail-title {
     font-weight: bolder;
@@ -57,20 +58,49 @@
     }
   }
 
-  .detail-sprites {
-    width: fit-content;
-    max-width: 800px;
-    margin: 0 auto;
-    background: vars.$card-background;
-    padding: 20px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
+  .detail-section-title {
+    font-size: 30px;
+    margin: 0;
 
-    img {
-      height: 100px;
+    @include mixins.desktop() {
+      font-size: 40px;
+    }
+  }
+
+  .detail-sprites {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    .detail-sprites-content {
+      width: fit-content;
+      max-width: 800px;
+      background: vars.$card-background;
+      padding: 20px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+
+      img {
+        height: 100px;
+      }
+    }
+  }
+
+  .detail-card-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+
+    .detail-card-content {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
     }
   }
 }

@@ -53,7 +53,7 @@ export class FirestoreService implements PokemonRepository {
               orderBy('uid', 'asc')
             );
 
-            return collectionData(pokemonsQuery, { idField: 'uid' }).pipe(
+            return collectionData(pokemonsQuery, { idField: 'id' }).pipe(
               map((pokemonsInRegion: Pokemon[]) => ({
                 id: regionDoc.id,
                 pokemons: pokemonsInRegion,
@@ -183,7 +183,7 @@ export class FirestoreService implements PokemonRepository {
               );
             }
 
-            return collectionData(pokemonsQuery, { idField: 'uid' }).pipe(
+            return collectionData(pokemonsQuery, { idField: 'id' }).pipe(
               map((pokemons: Pokemon[]) => {
                 return {
                   id: regionDoc.id,

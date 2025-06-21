@@ -1,0 +1,6 @@
+<div class="evolution-card-container">
+  <a [routerLink]="['/details/' + pokemon.id]">
+    <span>#{{ pokemon.uid }} {{ pokemon.name }}</span>
+    <img [src]="pokemon.avatar" [alt]="pokemon.name" />
+  </a>
+</div>

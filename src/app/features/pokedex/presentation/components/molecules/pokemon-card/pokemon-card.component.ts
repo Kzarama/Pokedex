@@ -1,11 +1,8 @@
-import { UpdatePokemonsUseCase } from '@/features/pokedex/application/use-cases/pokemon/update-pokemon.usecase';
 import { createEmptyPokemon } from '@/features/pokedex/domain/factories/pokemon.factory';
-import { CheckComponent } from '@/shared/components/check/check.component';
-import { Component, inject, Input, SimpleChanges } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Pokemon } from 'features/pokedex/domain/entities/pokemon.model';
 import { getFontColor } from 'shared/utils/get-font-color';
-import { NotificationAdapterService } from '../../../shared/notification.service';
 import { PokemonTypeComponent } from '../../atoms/pokemon-type/pokemon-type.component';
 import { ChecksComponent } from '../checks/checks.component';
 

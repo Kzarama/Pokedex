@@ -14,6 +14,8 @@ export interface Pokemon {
   sprites: string[];
   available: boolean;
   obtained: boolean;
+  evolutions?: { id: string; uid: number; name: string; avatar: string }[];
+  forms?: { id: string; uid: number; name: string; avatar: string }[];
 }
 
 export interface RegionDocumentFirestore {
