@@ -19,7 +19,8 @@ import { NotificationAdapterService } from '../../shared/notification.service';
   styleUrl: './search.component.scss',
 })
 export class SearchComponent {
-  isLoading = signal<boolean>(true);
+  isLoading = true;
+  isEmptyFilters = true;
   pokemons = signal<RegionalPokedex[]>([]);
   searchTitle = SEARCH_TITLE;
 
@@ -32,15 +33,23 @@ export class SearchComponent {
       .pipe(
         select(PokedexSelectors.selectCurrentPokedexFilters),
         switchMap((filters) => {
-          this.isLoading.set(true);
+          if (Object.keys(filters).length === 0) {
+            this.isLoading = false;
+            this.pokemons.set([]);
+            this.isEmptyFilters = true;
+            return [];
+          }
+
+          this.isEmptyFilters = false;
+
           return this.searchPokemonsUseCase.searchPokemon(filters).pipe(
             tap((data) => {
               this.pokemons.set(data);
-              this.isLoading.set(false);
+              this.isLoading = false;
             }),
             catchError(() => {
               this.notificationService.openErrorSnackBar();
-              this.isLoading.set(false);
+              this.isLoading = false;
               return of([]);
             })
           );

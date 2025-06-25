@@ -1,0 +1,16 @@
+<mat-expansion-panel [(expanded)]="panelIsExpanded" (opened)="onOpenPanel()">
+  <mat-expansion-panel-header>
+    <mat-panel-title
+      >{{ region.charAt(0).toUpperCase() + region.slice(1) }} @if
+      (pokemons().length > 0) { - {{ pokemons().length }}}</mat-panel-title
+    >
+  </mat-expansion-panel-header>
+
+  <ng-template matExpansionPanelContent>
+    <ul class="pokemon-list-list">
+      @for (pokemon of pokemons(); track pokemon.id) {
+      <app-pokemon-card [pokemon]="pokemon" />
+      }
+    </ul></ng-template
+  >
+</mat-expansion-panel>

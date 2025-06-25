@@ -1,7 +1,7 @@
 import * as PokedexActions from '@/core/state/search/search.actions';
 import * as PokedexSelectors from '@/core/state/search/search.selectors';
 import { PokedexState } from '@/core/state/search/search.state';
-import { PokemonFilter } from '@/features/pokedex/domain/repositories/pokemon.repository';
+import { PokemonFilter } from '@/features/pokedex/domain/entities/pokemon.model';
 import { CheckComponent } from '@/shared/components/check/check.component';
 import { Component, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';

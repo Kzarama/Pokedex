@@ -1,0 +1,14 @@
+@use "mixins";
+
+.pokemon-list-list {
+  margin: 0 auto;
+  padding: 10px 0;
+
+  @include mixins.desktop() {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px 50px;
+  }
+}

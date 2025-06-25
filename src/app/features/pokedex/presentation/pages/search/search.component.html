@@ -6,13 +6,15 @@
 <div class="search-container">
   <app-filters-wrapper class="search-filters" />
 
-  @if (isLoading()) {
-  <app-loading />
+  @if (isEmptyFilters){
+    <h2 class="search-empty-message">Usa los filtros.</h2>
+  } @else if (isLoading) {
+    <app-loading />
   }@else if (pokemons().length === 0) {
-  <h2 class="search-empty-message">
-    No hay pokemons, intenta cambiar los filtros.
-  </h2>
+    <h2 class="search-empty-message">
+      No hay pokemons, intenta cambiar los filtros.
+    </h2>
   } @else {
-  <app-pokemon-list class="search-pokemon-list" [pokemonsRegion]="pokemons()" />
+    <app-pokemon-list class="search-pokemon-list" [pokemonsRegion]="pokemons()" />
   }
 </div>

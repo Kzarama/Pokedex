@@ -1,23 +1,34 @@
-<div class="pokemon-list-panel">
-  <mat-accordion class="example-headers-align" multi>
-    @for (pokemonsList of pokemonsRegion; track pokemonsList.id) { @if
-    (pokemonsList.pokemons.length > 0) {
-    <mat-expansion-panel expanded>
-      <mat-expansion-panel-header>
-        <mat-panel-title
-          >{{
-            pokemonsList.id.charAt(0).toUpperCase() + pokemonsList.id.slice(1)
-          }}
-          - {{ pokemonsList.pokemons.length }}</mat-panel-title
-        >
-      </mat-expansion-panel-header>
+@if (loading){
+  <app-loading />
+} @else if (pokemonsRegion.length !== 0) {
+  <div class="pokemon-list-panel">
+    @for (pokemonsList of pokemonsRegion; track pokemonsList.id) {
+      @if (pokemonsList.pokemons.length > 0) {
+        <mat-expansion-panel expanded>
+          <mat-expansion-panel-header>
+            <mat-panel-title
+              >{{
+                pokemonsList.id.charAt(0).toUpperCase() + pokemonsList.id.slice(1)
+              }}
+              - {{ pokemonsList.pokemons.length }}</mat-panel-title
+            >
+          </mat-expansion-panel-header>
 
-      <ul class="pokemon-list-list">
-        @for (pokemon of pokemonsList.pokemons; track pokemon.id) {
-        <app-pokemon-card [pokemon]="pokemon" />
-        }
-      </ul>
-    </mat-expansion-panel>
-    } }
-  </mat-accordion>
-</div>
+          <ul class="pokemon-list-list">
+            @for (pokemon of pokemonsList.pokemons; track pokemon.id) {
+            <app-pokemon-card [pokemon]="pokemon" />
+            }
+          </ul>
+        </mat-expansion-panel>
+      }
+    }
+  </div>
+} @else {
+  <div class="pokemon-list-panel">
+    <mat-accordion class="example-headers-align" multi>
+      @for (region of regions; track region.id) {
+      <app-region-panel [region]="region.id" />
+      }
+    </mat-accordion>
+  </div>
+}

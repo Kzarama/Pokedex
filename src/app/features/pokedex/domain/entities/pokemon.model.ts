@@ -26,4 +26,6 @@ export interface PokemonFilter {
   name?: string;
   available?: boolean;
   obtained?: boolean;
+  megaEvolve?: boolean;
+  gMax?: boolean;
 }

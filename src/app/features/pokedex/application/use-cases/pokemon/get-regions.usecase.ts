@@ -4,10 +4,10 @@ import { inject, Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class GetPokemonsUseCase {
+export class GetRegionsUseCase {
   private firestoreService: FirestoreService = inject(FirestoreService);
 
-  getAllPokemons() {
-    return this.firestoreService.getPokemons();
+  getAllRegions() {
+    return this.firestoreService.getRegions();
   }
 }

@@ -1,9 +1,12 @@
 import { Observable } from 'rxjs';
-import { Pokemon, RegionalPokedex } from '../entities/pokemon.model';
+import {
+  Pokemon,
+  PokemonFilter,
+  RegionalPokedex,
+  RegionDocumentFirestore,
+} from '../entities/pokemon.model';
 
 export interface PokemonRepository {
-  getPokemons(): Observable<RegionalPokedex[]>;
-
   getPokemonById(pokemonUidToFind: string): Observable<Pokemon>;
 
   updatePokemon(
@@ -12,13 +15,9 @@ export interface PokemonRepository {
     updates: { available?: boolean; obtained?: boolean }
   ): Promise<void>;
 
-  searchPokemon(filters?: PokemonFilter): Observable<RegionalPokedex[]>;
-}
+  getRegions(): Observable<RegionDocumentFirestore[]>;
 
-export interface PokemonFilter {
-  name?: string;
-  available?: boolean;
-  obtained?: boolean;
-  megaEvolve?: boolean;
-  gMax?: boolean;
+  getPokemonsByRegion(region: string): Observable<Pokemon[]>;
+
+  searchPokemon(filters?: PokemonFilter): Observable<RegionalPokedex[]>;
 }
