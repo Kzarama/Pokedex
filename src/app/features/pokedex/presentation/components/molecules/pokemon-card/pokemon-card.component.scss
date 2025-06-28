@@ -38,11 +38,13 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      height: 100%;
       gap: 5px;
 
       @include mixins.desktop() {
         gap: 15px;
       }
+
       .pokemon-card-title {
         font-weight: bolder;
         text-transform: capitalize;

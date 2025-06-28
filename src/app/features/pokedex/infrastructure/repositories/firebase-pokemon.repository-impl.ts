@@ -103,8 +103,8 @@ export class FirestoreService implements PokemonRepository {
   searchPokemon(filters?: PokemonFilter): Observable<RegionalPokedex[]> {
     const ids = [];
 
-    if (filters?.megaEvolve) ids.push('megaEvoluciones');
-    if (filters?.gMax) ids.push('gMax');
+    if (filters?.megaEvolve) ids.push('megaevoluciones');
+    if (filters?.gMax) ids.push('gmax');
 
     const regions = ids.length
       ? of(ids.map((id) => ({ id })))

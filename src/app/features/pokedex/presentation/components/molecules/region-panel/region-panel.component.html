@@ -1,4 +1,8 @@
-<mat-expansion-panel [(expanded)]="panelIsExpanded" (opened)="onOpenPanel()">
+<mat-expansion-panel
+  [(expanded)]="panelIsExpanded"
+  (opened)="onOpenPanel()"
+  [style]="{ overflow: panelIsExpanded ? 'visible' : 'hidden' }"
+>
   <mat-expansion-panel-header>
     <mat-panel-title
       >{{ region.charAt(0).toUpperCase() + region.slice(1) }} @if
